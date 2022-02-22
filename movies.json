@@ -1,0 +1,30 @@
+[
+    {
+        "title" : "The Room",
+        "productionCountries" : [
+            "USA"
+        ],
+        "productionYear" : 2003,
+        "length" : 99,
+        "genre" : "Drama",
+        "productionCompany" : "Wiseau-Films",
+        "language" : "english",
+        "subtitles" : "svenska",
+        "director" : "Tommy Wiseau",
+        "cast" : [
+            "Tommy Wiseau", 
+            "Juliette Danielle",
+            "Greg Sestero",
+            "Philip Haldiman"
+        ],
+        "description" : "<p>Johnny is a successful bank executive who lives quietly in a San Francisco townhouse with his fiancée, Lisa. One day, putting aside any scruple, she seduces Johnny's best friend, Mark. From there, nothing will be the same again.</p>",
+        "images" : [
+            "theRoomTitle.jpg",
+            "theRoomCast.jpg"
+        ],
+        "youtubeTrailers" : [
+            "https://www.youtube.com/embed/9-dIdFXeFhs"
+        ],
+        "imdbRating" : 3.7
+    }
+]
