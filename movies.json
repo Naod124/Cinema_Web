@@ -26,5 +26,33 @@
             "https://www.youtube.com/embed/9-dIdFXeFhs"
         ],
         "imdbRating" : 3.7
+    },
+    {
+        "title" : "Hata Göteborg",
+        "productionCountries" : [
+            "Sweden"
+        ],
+        "productionYear" : 2007,
+        "length" : 82,
+        "genre" : "Drama/Comedy",
+        "productionCompany" : "Lillhonga Film & Teater",
+        "language" : "svenska",
+        "subtitles" : "svenska",
+        "director" : "Robert Lillhonga",
+        "cast" : [
+            "Andreas Karoliussen", 
+            "Nicolaj Schröder",
+            "Magnus Skog",
+            "Alexander Stocks"
+        ],
+        "description" : "<p>The gloomy, hate-filled lives of a group of teenage guys in the south of Sweden suddenly turn around when one of the guys' hippie-like cousin shows up.</p>",
+        "images" : [
+            "hataGöteborgtitle.jpg",
+            "hataGöteborgOtherTitle.jpg"
+        ],
+        "youtubeTrailers" : [
+            "https://www.youtube.com/embed/teRDBHnKuxc"
+        ],
+        "imdbRating" : 5.4
     }
 ]
