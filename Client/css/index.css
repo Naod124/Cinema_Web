@@ -148,3 +148,126 @@ main {
   width: 100%;
   height: 100%;
 }
+
+.booking-container {
+  align-items: center;
+  background: var(--color-body);
+  color: var(--color-headings);
+  display: flex;
+  flex-direction: column;
+  font-family: "Raleway", sans-serif;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+}
+
+.option-container {
+  /* background: rgba(0, 0, 0, 0.1); */
+  padding: 5px 10px;
+  border-radius: 5px;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  background: var(--color-primary);
+  margin-bottom: 3rem;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+i {
+  margin-right: 20px;
+}
+
+.movie-container select,
+.drop-down-container select {
+  background-color: var(--color-headings);
+  border-radius: 5px;
+  border: 0;
+  font-size: 14px;
+  margin-left: 10px;
+  padding: 5px 15px 5px 15px;
+}
+
+.plus-minus-button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.seat-container {
+  perspective: 1000px;
+  margin-bottom: 30px;
+}
+
+.seat {
+  background-color: var(--color-headings);
+  height: 17px;
+  width: 20px;
+  margin: 3px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.seat.selected {
+  background-color: var(--color-primary);
+}
+
+.seat.taken {
+  background-color: var(--color-neutral);
+}
+
+.seat:nth-of-type(3) {
+  margin-right: 18px;
+}
+
+.seat:nth-last-of-type(3) {
+  margin-left: 18px;
+}
+
+.seat:not(.taken):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.saloon .seat:not(.taken):hover {
+  cursor: default;
+  transform: scale(1);
+}
+
+.saloon {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #777;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.saloon li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+.saloon li small {
+  margin-left: 4px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+p.text {
+  margin: 5px 0;
+}
+
+p.text span {
+  color: var(--color-primary);
+}
