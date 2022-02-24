@@ -1,6 +1,17 @@
+@import "css/normalize.css";
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
 :root {
   --color-primary: #ffd634;
   --color-headings: #fff;
   --color-body: linear-gradient(#ababab, #fff);
   --color-neutral: #565960;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+* {
+  font-family: "Raleway", sans-serif;
 }
