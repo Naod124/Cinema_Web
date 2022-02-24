@@ -71,3 +71,21 @@ span {
 .navbar-links .active {
   color: var(--color-primary);
 }
+
+.toggle-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+
+.toggle-button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: var(--color-headings);
+  border-radius: 10px;
+}
