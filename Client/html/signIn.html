@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Filmvisarna</title>
-    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/signIn.css" />
   </head>
   <body>
     <header>
@@ -29,8 +29,31 @@
         </div>
       </nav>
     </header>
-    <!-- <main></main>
-    <footer></footer> -->
+
+    <div class="wrapper">
+        <h1 >Log in</h1>
+        <form action="#">
+          <div class="field email">
+            <div class="input-area">
+              <input id="username" type="text" placeholder="Email Address">
+            </div>
+            <div class="error error-txt">Email can't be blank</div>
+          </div>
+          <div class="field password">
+            <div class="input-area">
+              <input id="password" type="password" placeholder="Password">
+            </div>
+            <div class="error error-txt">Password can't be blank</div>
+          </div>
+          <div>
+              <a  id="forget"
+            href="#">Forgot password?</a></div>
+          <input id="submit" type="submit" value="Login">
+        </form>
+        <div class="sign-txt">
+             <a href="#">Sign up</a></div>
+      </div>
+     <footer></footer> 
     <script src="../js/index.js"></script>
   </body>
 </html>
