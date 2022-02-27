@@ -22,7 +22,7 @@ body {
   background: #ababab;
 }
 
-header {
+.home-header {
   background-image   : url(/images/interstellar.jfif);
   background-repeat  : no-repeat;
   background-size    : cover;
@@ -182,6 +182,9 @@ main {
   display        : flex;
   flex-wrap      : wrap;
   justify-content: center;
+  /* background-color: white; */
+  /* height       : 100%;
+  width: 100%; */
 }
 
 .movie {
