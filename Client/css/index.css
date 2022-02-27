@@ -30,7 +30,7 @@ body {
   height             : 29rem;
 }
 
-h1 {
+.home-h1 {
   font-size  : 3.5rem;
   font-weight: bolder;
   color      : white;
@@ -39,7 +39,7 @@ h1 {
   width      : 26rem;
 }
 
-h2 {
+.home-h2 {
   font-size    : 0.8rem;
   color        : white;
   margin-left  : 13rem;
@@ -72,6 +72,53 @@ i {
   filter    : brightness(80%);
   color     : white;
 }
+
+.movie-container {
+  position        : fixed;
+  bottom          : 0;
+  top             : 26rem;
+  width           : 80%;
+  background-color: white;
+}
+
+.filters {
+  display        : flex;
+  margin-right   : 2rem;
+  justify-content: space-around;
+  list-style     : none;
+  margin-top     : 2rem;
+}
+
+.filters li a {
+  text-decoration: none;
+  color          : black;
+  display        : block;
+  height         : 2rem;
+  font-size      : 0.9rem;
+  font-weight    : bold;
+  border-bottom  : 3px solid transparent;
+  transition     : border-bottom 0.5s;
+}
+
+.filters li a:hover {
+  border-bottom: 2px solid #ffd634;
+}
+
+.movie-list {
+  display              : grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap             : 2px;
+}
+
+/* .movie-list .item {
+  position        : relative;
+  margin-left     : 4rem;
+  margin-top      : 2rem;
+  text-align      : center;
+  width           : 250px;
+  height          : 200px;
+  background-color: #565960;
+} */
 
 .navbar {
   display        : flex;
@@ -182,9 +229,6 @@ main {
   display        : flex;
   flex-wrap      : wrap;
   justify-content: center;
-  /* background-color: white; */
-  /* height       : 100%;
-  width: 100%; */
 }
 
 .movie {
