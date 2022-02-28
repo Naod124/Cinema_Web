@@ -27,11 +27,24 @@ $('#submit').click(function (e) {
     });
     });  
   }
-
   function openForm() {
-    document.getElementById("myForm").style.display = "block";
+    $("#myForm").show();
   }
   
   function closeForm() {
-    document.getElementById("myForm").style.display = "none";
-  }
+$("#myForm").hide(); 
+$("#myForm1").hide();
+$("#myForm2").hide();
+
+
+ }
+
+ function secondForm() {
+    $("#myForm").hide(); 
+    $("#myForm1").show();
+ }
+
+ function thirdForm() {
+    $("#myForm1").hide(); 
+    $("#myForm2").show();
+ }

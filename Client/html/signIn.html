@@ -47,14 +47,52 @@
           </div>
           <div>
               <a  id="forget" onclick="openForm()"
-            href="#">Forgot password?</a></div>
+            href="#">ForgetPassword?</a></div>
           <input id="submit" type="submit" value="Login">
         </form>
         <div class="sign-txt">
              <a href="#">Sign up</a></div>
+      </div>
+     <div class="form-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+          <h2>Email for reset code</h2>
+      
+          <label for="Enter your email"></label>
+          <input type="text" placeholder="Enter Email" name="email" required>
+      
+          <button id="submit" type="submit" onclick="secondForm()" class="btn">Send</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+      </div>
+      <div class="form-popup" id="myForm1">
+        <form action="/action_page.php" class="form-container">
+          <h2>Reset code</h2>
+      
+          <label for="email"></label>
+          <input type="text" placeholder="Enter reset code" name="email" required>
+      
+          <button id="submit" type="submit" onclick="thirdForm()" class="btn">Confirm</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+      </div>
+      
+      <div class="form-popup" id="myForm2">
+        <form action="/action_page.php" class="form-container">
+          <h2>Change Password</h2>
+      
+           <label for="psw"></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+      
+          <label for="psw"></label>
+          <input type="password" placeholder="Repeat Password" name="psw" required>
+      
+          <button id="submit" type="submit" onclick="secondForm()" class="btn">Validate</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
       </div>
      <footer></footer> 
     <script src="../js/signIn.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </body>
 </html>
+
