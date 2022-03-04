@@ -123,20 +123,19 @@ i {
 }
 
 .movie-list {
-  display: grid;
+  display: block;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 2px;
 }
 
-/* .movie-list .item {
+ .movie-list .item {
   position        : relative;
   margin-left     : 4rem;
   margin-top      : 2rem;
   text-align      : center;
-  width           : 250px;
-  height          : 200px;
-  background-color: #565960;
-} */
+  width           : 15%;
+  height          : auto;
+} 
 
 .navbar {
   display: flex;
