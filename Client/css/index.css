@@ -123,19 +123,24 @@ i {
 }
 
 .movie-list {
-  display: block;
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 2px;
 }
 
- .movie-list .item {
+.movieImage{
+padding-bottom: 2.5rem;
+}
+
+
+/* .movie-list .item {
   position        : relative;
   margin-left     : 4rem;
   margin-top      : 2rem;
   text-align      : center;
   width           : 15%;
   height          : auto;
-} 
+} */
 
 .navbar {
   display: flex;
