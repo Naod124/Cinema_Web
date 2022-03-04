@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="450" height="134" viewBox="0 0 450 134">
+    <defs>
+        <linearGradient id="nxqbowv8sa" x1="50%" x2="50%" y1="0%" y2="100%">
+            <stop offset="0%" stop-color="#FFF" stop-opacity=".3"/>
+            <stop offset="100%" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="y4k3iwyfxc" x1="50%" x2="50%" y1="0%" y2="100%">
+            <stop offset="0%" stop-color="#FFF" stop-opacity=".498"/>
+            <stop offset="100%" stop-color="#FFF" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="nhdi9shvze" x1="59.381%" x2="45.876%" y1="58.49%" y2="67.172%">
+            <stop offset="0%" stop-color="#EE0030"/>
+            <stop offset="25%" stop-color="#EE0030"/>
+            <stop offset="25%" stop-color="#C30028"/>
+            <stop offset="50%" stop-color="#C30028"/>
+            <stop offset="50%" stop-color="#8C001E"/>
+            <stop offset="74.736%" stop-color="#8C001E"/>
+            <stop offset="75%" stop-color="#620019"/>
+            <stop offset="100%" stop-color="#66001A"/>
+        </linearGradient>
+        <radialGradient id="iopo1x90qd" cx="50%" cy="50%" r="204.576%" fx="50%" fy="50%" gradientTransform="matrix(.22523 0 0 .23383 .387 .383)">
+            <stop offset="0%" stop-color="#FFF" stop-opacity="0"/>
+            <stop offset="100%" stop-opacity=".15"/>
+        </radialGradient>
+        <path id="tabzbxleeb" d="M3.2 4L447.2 4 408.451 104 41.949 104z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <path fill="url(#nxqbowv8sa)" d="M66.781 104L382.105 104 415.443 134 33.443 134z" transform="translate(-321 -409) translate(319 55) translate(2 309) translate(0 45)"/>
+                        <g transform="translate(-321 -409) translate(319 55) translate(2 309) translate(0 45)">
+                            <use fill="#FFF" xlink:href="#tabzbxleeb"/>
+                            <path fill="url(#iopo1x90qd)" stroke="url(#y4k3iwyfxc)" stroke-linejoin="square" d="M446.47 4.5l-38.362 99H42.292L3.93 4.5h442.54z"/>
+                        </g>
+                        <path fill="url(#nhdi9shvze)" d="M0 0L29.194 0 67 104.8 39.488 105z" transform="translate(-321 -409) translate(319 55) translate(2 309) translate(0 45)"/>
+                        <path fill="url(#nhdi9shvze)" d="M383 0L412.194 0 450 104.8 422.488 105z" transform="translate(-321 -409) translate(319 55) translate(2 309) translate(0 45) matrix(-1 0 0 1 833 0)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

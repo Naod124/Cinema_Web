@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tickets</title>
     <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/all.min.css" />
   </head>
   <body>
     <header>
@@ -29,7 +30,124 @@
         </div>
       </nav>
     </header>
-    <main></main>
+    <main>
+      <div class="wrapper">
+        <div class="movie-card">
+          <img src="/images/interstellarTitle.jpg" alt="Movie Poster" />
+          <div class="descriptions">
+            <h1>Interstellar</h1>
+            <p>
+              A team of explorers travel through a wormhole in space in an
+              attempt to ensure humanity's survival.<br />
+              <br /><strong>Director:</strong> Christopher Nolan <br />
+              <strong>Writers:</strong> Jonathan Nolan, Christopher Nolan <br />
+              <strong>Stars:</strong> Matthew McConaughey, Anne Hathaway,
+              Jessica Chastain
+            </p>
+            <button>Watch Trailer <i class="fab fa-youtube"></i></button>
+          </div>
+        </div>
+        <div class="booking-container">
+          <div class="option-container">
+            <div class="plus-minus-button">
+              <i class="fas fa-2x fa-couch"></i>
+              <button>-</button>
+              <input type="number" value="1" style="width: 4ch; height: 5ch" />
+              <button>+</button>
+            </div>
+            <div class="drop-down-container">
+              <label>Type </label>
+              <select id="price">
+                <option value="65">Children &#8692; SEK 65</option>
+                <option value="85">Adult &#8692; SEK 85</option>
+                <option value="75">Retired &#8692; SEK 75</option>
+              </select>
+            </div>
+          </div>
+          <div class="seat-container">
+            <div class="auditorium-screen">
+              <img
+                src="/images/auditorium-screen.svg"
+                alt="An image of a movie theater screen"
+              />
+            </div>
+            <div class="row">
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+            </div>
+            <div class="row">
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat taken"></div>
+              <div class="seat taken"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+            </div>
+            <div class="row">
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat taken"></div>
+              <div class="seat taken"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+            </div>
+            <div class="row">
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+            </div>
+          </div>
+          <ul class="legend">
+            <li>
+              <div class="seat"></div>
+              <span>Available</span>
+            </li>
+            <li>
+              <div class="seat taken"></div>
+              <span>Taken</span>
+            </li>
+            <li>
+              <div class="seat selected"></div>
+              <span>Selected</span>
+            </li>
+            <li>
+              <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
     <footer></footer>
     <script src="../js/tickets.js"></script>
   </body>

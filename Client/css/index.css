@@ -1,11 +1,11 @@
-@import "css/normalize.css";
-@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import "../css/normalize.css";
+@import url("https://fonts.googleapis.com/css?family=Raleway");
 
 :root {
-  --color-primary : #ffd634;
+  --color-primary: #ffd634;
   --color-headings: #fff;
-  --color-body    : linear-gradient(#ababab, #fff);
-  --color-neutral : #565960;
+  --color-body: linear-gradient(#ababab, #fff);
+  --color-neutral: #565960;
 }
 
 * {
@@ -17,8 +17,8 @@
 }
 
 body {
-  margin    : 0;
-  padding   : 0;
+  margin: 0;
+  padding: 0;
   background: #ababab !important;
 }
 
@@ -31,92 +31,91 @@ body {
 } */
 
 .carousel-slide {
-  position                 : absolute;
-  width                    : 100%;
-  height                   : 40rem;
-  top                      : -13rem;
+  position: absolute;
+  width: 100%;
+  height: 40rem;
+  top: -13rem;
 }
 
 .home-h1 {
-  font-size  : 3.5rem;
+  font-size: 3.5rem;
   font-weight: bolder;
-  color      : white;
+  color: white;
   margin-left: 13rem;
-  margin-top : 5rem;
-  width      : 12em;
-  z-index    : 10;
-  position   : relative;
+  margin-top: 5rem;
+  width: 12em;
+  z-index: 10;
+  position: relative;
 }
 
 .home-h2 {
-  font-size    : 0.8rem;
-  color        : white;
-  margin-left  : 13rem;
-  margin-top   : 0rem;
+  font-size: 0.8rem;
+  color: white;
+  margin-left: 13rem;
+  margin-top: 0rem;
   margin-bottom: 1rem;
-  width        : 16rem;
-  z-index      : 10;
-  position     : relative;
-
+  width: 16rem;
+  z-index: 10;
+  position: relative;
 }
 
 .trailer-button {
   background-color: #ffd634;
-  font-size       : 1rem;
-  color           : black;
-  font-weight     : 900;
-  margin-left     : 13rem;
-  width           : 170px;
-  height          : 45px;
-  border          : none;
-  cursor          : pointer;
-  z-index         : 10;
-  position        : relative;
+  font-size: 1rem;
+  color: black;
+  font-weight: 900;
+  margin-left: 13rem;
+  width: 170px;
+  height: 45px;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  position: relative;
 }
 
 i {
-  position   : relative;
+  position: relative;
   margin-left: -1.8rem;
-  cursor     : pointer;
-  z-index    : 10;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .button-darken {
   transition: 1.6s;
-  filter    : brightness(80%);
-  color     : white;
+  filter: brightness(80%);
+  color: white;
 }
 
 .movie-container {
-  position           : relative;
-  height             : 50rem;
+  position: relative;
+  height: 50rem;
   /* bottom          : 0; */
-  top                : 10rem;
-  z-index            : 10;
-  width              : 80%;
-  background-color   : white;
+  top: 10rem;
+  z-index: 10;
+  width: 80%;
+  background-color: white;
 }
 
 .filters {
-  display        : flex;
-  margin-right   : 2rem;
+  display: flex;
+  margin-right: 2rem;
   justify-content: space-around;
-  list-style     : none;
-  margin-top     : 2rem;
+  list-style: none;
+  margin-top: 2rem;
 }
 
 .filters li a {
-  text-decoration    : none;
+  text-decoration: none;
   /* background-color: #565960; */
-  color              : black;
-  display            : block;
-  height             : 3rem;
-  width              : 8rem;
-  font-size          : 0.9rem;
-  font-weight        : bold;
-  border-bottom      : 3px solid transparent;
-  transition         : border-bottom 0.5s;
-  text-align         : center;
+  color: black;
+  display: block;
+  height: 3rem;
+  width: 8rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-bottom: 3px solid transparent;
+  transition: border-bottom 0.5s;
+  text-align: center;
 }
 
 .filters li a:hover {
@@ -124,9 +123,9 @@ i {
 }
 
 .movie-list {
-  display              : grid;
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap             : 2px;
+  grid-gap: 2px;
 }
 
 /* .movie-list .item {
@@ -140,17 +139,17 @@ i {
 } */
 
 .navbar {
-  display        : flex;
-  position       : relative;
+  display: flex;
+  position: relative;
   justify-content: space-between;
-  align-items    : center;
-  color          : var(--color-headings);
-  z-index        : 100;
+  align-items: center;
+  color: var(--color-headings);
+  z-index: 100;
 }
 
 .company-name {
   font-size: 1.5rem;
-  margin   : 0.5rem;
+  margin: 0.5rem;
 }
 
 span {
@@ -163,7 +162,7 @@ span {
 
 .navbar-links ul {
   display: flex;
-  margin : 0;
+  margin: 0;
   padding: 0;
 }
 
@@ -172,10 +171,10 @@ span {
 }
 
 .navbar-links li a {
-  display        : block;
+  display: block;
   text-decoration: none;
-  color          : var(--color-headings);
-  padding        : 2.5rem;
+  color: var(--color-headings);
+  padding: 2.5rem;
   opacity: 0.65;
 }
 
@@ -187,7 +186,7 @@ span {
   background-color: rgb(192, 184, 184);
 } */
 
-.navbar-links li a:hover{
+.navbar-links li a:hover {
   opacity: 1;
 }
 
@@ -198,27 +197,27 @@ span {
 }
 
 .toggle-button {
-  position       : absolute;
-  top            : 0.75rem;
-  right          : 1rem;
-  display        : none;
-  flex-direction : column;
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
   justify-content: space-between;
-  width          : 30px;
-  height         : 21px;
+  width: 30px;
+  height: 21px;
 }
 
 .toggle-button .bar {
-  height          : 3px;
-  width           : 100%;
+  height: 3px;
+  width: 100%;
   background-color: var(--color-headings);
-  border-radius   : 10px;
+  border-radius: 10px;
 }
 
 @media (max-width: 800px) {
   .navbar {
     flex-direction: column;
-    align-items   : flex-start;
+    align-items: flex-start;
   }
 
   .toggle-button {
@@ -227,11 +226,11 @@ span {
 
   .navbar-links {
     display: none;
-    width  : 100%;
+    width: 100%;
   }
 
   .navbar-links ul {
-    width         : 100%;
+    width: 100%;
     flex-direction: column;
   }
 
@@ -253,54 +252,59 @@ span {
 }
 
 main {
-  display        : flex;
-  flex-wrap      : wrap;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 .movie {
-  width           : 300px;
-  margin          : 1rem;
+  width: 300px;
+  margin: 1rem;
   background-color: var(--color-body);
-  box-shadow      : 0 4px 5px rgba(0, 0, 0, 0.2);
-  position        : relative;
-  overflow        : hidden;
-  border-radius   : 3px;
-  cursor          : pointer;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 .movie img {
-  width : 100%;
+  width: 100%;
   height: 100%;
 }
 
 .booking-container {
-  align-items    : center;
-  background     : var(--color-body);
-  color          : var(--color-headings);
-  display        : flex;
-  flex-direction : column;
-  font-family    : "Raleway", sans-serif;
-  height         : 100vh;
+  align-content: center;
+  align-items: center;
+  /* background: #ababab; */
+  border: none;
+  color: var(--color-headings);
+  display: flex;
+  flex-direction: column;
+  font-family: "Raleway", sans-serif;
+  height: 98%;
   justify-content: center;
-  margin         : 0;
+  margin: 120px;
 }
 
 .option-container {
   /* background: rgba(0, 0, 0, 0.1); */
-  padding        : 5px 10px;
-  border-radius  : 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
   list-style-type: none;
-  display        : flex;
+  display: flex;
   justify-content: space-between;
+  width: 450px;
+  height: 50px;
+  margin-bottom: 2rem;
 }
 
 button {
-  background        : var(--color-primary);
-  margin-bottom     : 3rem;
-  -moz-appearance   : none;
+  background: var(--color-primary);
+  margin-bottom: 3rem;
+  -moz-appearance: none;
   -webkit-appearance: none;
-  appearance        : none;
+  appearance: none;
 }
 
 i {
@@ -310,31 +314,36 @@ i {
 .movie-container select,
 .drop-down-container select {
   background-color: var(--color-headings);
-  border-radius   : 5px;
-  border          : 0;
-  font-size       : 14px;
-  margin-left     : 10px;
-  padding         : 5px 15px 5px 15px;
+  border-radius: 5px;
+  border: 0;
+  font-size: 14px;
+  margin-left: 10px;
+  padding: 5px 15px 5px 15px;
 }
 
 .plus-minus-button {
-  -moz-appearance   : none;
+  -moz-appearance: none;
   -webkit-appearance: none;
-  appearance        : none;
+  appearance: none;
 }
 
 .seat-container {
-  perspective  : 1000px;
   margin-bottom: 30px;
+  background-color: #111;
+  /* border: 0 solid var(--color-headings); */
+  border: none;
+  box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.9);
+  border-radius: 10px;
+  padding: 20px;
 }
 
 .seat {
-  background-color       : var(--color-headings);
-  height                 : 17px;
-  width                  : 20px;
-  margin                 : 3px;
-  border-top-left-radius : 10px;
+  background-color: var(--color-headings);
+  border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  height: 17px;
+  margin: 3px;
+  width: 20px;
 }
 
 .seat.selected {
@@ -354,38 +363,50 @@ i {
 }
 
 .seat:not(.taken):hover {
-  cursor   : pointer;
+  cursor: pointer;
   transform: scale(1.2);
 }
 
-.saloon .seat:not(.taken):hover {
-  cursor   : default;
+.legend .seat:not(.taken):hover {
+  cursor: default;
   transform: scale(1);
 }
 
-.saloon {
-  background     : rgba(0, 0, 0, 0.1);
-  padding        : 5px 10px;
-  border-radius  : 5px;
-  color          : #777;
+.legend {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
   list-style-type: none;
-  display        : flex;
-  justify-content: space-between;
+  padding: 5px 30px;
 }
 
-.saloon li {
-  display        : flex;
-  align-items    : center;
+.legend li {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  margin         : 0 10px;
+  margin: 0 10px;
 }
 
-.saloon li small {
-  margin-left: 4px;
+.fa-shopping-cart:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.legend li span {
+  color: var(--color-neutral);
+  margin-left: 8px;
+}
+
+.fa-shopping-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 50px;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .row {
-  display        : flex;
+  display: flex;
   justify-content: center;
 }
 
@@ -395,4 +416,96 @@ p.text {
 
 p.text span {
   color: var(--color-primary);
+}
+
+/* Movie-card */
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: space-evenly;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.movie-card {
+  flex: 1;
+  flex-basis: 350px;
+  flex-grow: 0;
+  height: 350px;
+  margin-top: 120px;
+  margin-left: 120px;
+  background-color: #ababab;
+  border: 0 solid var(--color-headings);
+  border-radius: 10px;
+  box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.8, 0.5, 0.2, 1.4);
+  overflow: hidden;
+  object-fit: cover;
+  position: relative;
+  -webkit-box-reflect: below 8px
+    linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4));
+}
+.movie-card img {
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s cubic-bezier(0.8, 0.5, 0.2, 1.4);
+}
+.descriptions {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(104, 99, 99, 0.7);
+  width: 100%;
+  height: 100%;
+  transition: all 0.7s ease-in-out;
+  padding: 20px;
+  box-sizing: border-box;
+  clip-path: circle(0% at 100% 100%);
+}
+.movie-card:hover .descriptions {
+  left: 0px;
+  transition: all 0.7s ease-in-out;
+  clip-path: circle(75%);
+}
+.movie-card:hover {
+  transition: all 0.5s cubic-bezier(0.8, 0.5, 0.2, 1.4);
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+  transform: scale(0.97);
+}
+.movie-card:hover img {
+  transition: all 0.5s cubic-bezier(0.8, 0.5, 0.2, 1.4);
+  transform: scale(1.6) rotate(20deg);
+  filter: blur(3px);
+}
+.movie-card h1 {
+  color: var(--color-primary);
+  letter-spacing: 1px;
+  margin: 0px;
+}
+.movie-card p {
+  color: var(--color-headings);
+  line-height: 24px;
+  height: 70%;
+}
+.movie-card button {
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  border-style: none;
+  border-radius: 12px;
+  background-color: var(--color-primary);
+  color: var(--color-neutral);
+  font-size: 15px;
+  outline: none;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4);
+  transition: all 0.5s ease-in-out;
+}
+.movie-card button:hover {
+  transform: scale(0.95) translateX(-5px);
+  transition: all 0.5s ease-in-out;
 }

@@ -2,7 +2,7 @@ const API_KEY = "api_key=220a900ff9c233e9bc7b4e8a35ed424a&page=3";
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMAGE_URL = "https://image.tmdb.org/t/p/w1280";
 const MOVIES_IN_THEATER =
-  "/discover/movie?primary_release_date.gte=2022-01-01&primary_release_date.lte=2022-02-24&";
+  "/discover/movie?primary_release_date.gte=2022-01-01&primary_release_date.lte=2022-03-03&";
 const DISCOVER_API = BASE_URL + MOVIES_IN_THEATER + API_KEY;
 
 const main = document.getElementById("main");
