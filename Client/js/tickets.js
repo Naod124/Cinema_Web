@@ -1,14 +1,18 @@
-const price = document.getElementById("price");
-const seatContainer = document.querySelector(".seat-container");
-const seats = document.querySelectorAll(".row .seat:not(.taken)");
-const cart = document.querySelector(".fa-shopping-cart");
-
-const ticketPrice = +price.value;
+const price = document.getElementById("price"),
+  seatContainer = document.querySelector(".seat-container"),
+  seats = document.querySelectorAll(".row .seat:not(.taken)"),
+  cart = document.querySelector(".fa-shopping-cart"),
+  seatCount = document.getElementById("seat-count"),
+  totalPrice = document.getElementById("total-price"),
+  shoppingCart = document.getElementById("shopping-cart"),
+  closeBtn = document.querySelector(".close-btn"),
+  ticketPrice = +price.value;
 
 function updateSelectedSeat() {
   const selectedSeats = document.querySelectorAll(".row .seat.selected");
   const numberOfSelectedSeats = selectedSeats.length;
-  // cart.innerHTML = numberOfSelectedSeats * ticketPrice;
+  seatCount.innerText = numberOfSelectedSeats;
+  totalPrice.innerText = numberOfSelectedSeats * ticketPrice;
 }
 
 seatContainer.addEventListener("click", (e) => {
@@ -20,4 +24,12 @@ seatContainer.addEventListener("click", (e) => {
 
     updateSelectedSeat();
   }
+});
+
+cart.addEventListener("click", () => {
+  shoppingCart.classList.add("show");
+});
+
+closeBtn.addEventListener("click", () => {
+  shoppingCart.classList.remove("show");
 });

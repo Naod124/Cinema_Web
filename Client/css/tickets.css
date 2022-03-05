@@ -387,3 +387,41 @@ p.text span {
   transform: scale(0.95) translateX(-5px);
   transition: all 0.5s ease-in-out;
 }
+
+.shopping-cart {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(104, 99, 99, 0.7);
+  color: var(--color-headings);
+  line-height: 1.5;
+  min-height: 30vh;
+  width: 170px;
+  padding: 20px;
+  border-radius: 8px;
+  transform: translateX(170px);
+  transition: transform 1s ease-in-out;
+}
+
+.shopping-cart.show {
+  transform: translateX(0);
+}
+
+.close-btn {
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+  border-style: none;
+  border-radius: 12px;
+  background-color: var(--color-primary);
+  color: var(--color-neutral);
+  font-size: 15px;
+  outline: none;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4);
+  transition: all 0.5s ease-in-out;
+}
+
+.close-btn:hover {
+  transform: scale(0.95) translateX(-5px);
+  transition: all 0.5s ease-in-out;
+}
