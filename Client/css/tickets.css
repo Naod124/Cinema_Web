@@ -194,6 +194,10 @@ i {
   padding: 5px 15px 5px 15px;
 }
 
+.drop-down-container select:focus {
+  outline: 0;
+}
+
 .plus-minus-button {
   -moz-appearance: none;
   -webkit-appearance: none;

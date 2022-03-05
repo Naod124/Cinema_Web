@@ -5,7 +5,7 @@ const cart = document.querySelector(".fa-shopping-cart");
 
 const ticketPrice = +price.value;
 
-function updatedSelectedSeat() {
+function updateSelectedSeat() {
   const selectedSeats = document.querySelectorAll(".row .seat.selected");
   const numberOfSelectedSeats = selectedSeats.length;
   // cart.innerHTML = numberOfSelectedSeats * ticketPrice;
@@ -18,6 +18,6 @@ seatContainer.addEventListener("click", (e) => {
   ) {
     e.target.classList.toggle("selected");
 
-    updatedSelectedSeat();
+    updateSelectedSeat();
   }
 });
