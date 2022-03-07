@@ -1,4 +1,4 @@
-const API_KEY = "api_key=220a900ff9c233e9bc7b4e8a35ed424a&page=3";
+/*const API_KEY = "api_key=220a900ff9c233e9bc7b4e8a35ed424a&page=3";
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMAGE_URL = "https://image.tmdb.org/t/p/w1280";
 const MOVIES_IN_THEATER =
@@ -37,4 +37,5 @@ function displayMovies(movies) {
         `;
     main.append(div);
   });
-}
+}*/
+

@@ -285,3 +285,15 @@ main {
   -ms-transform: scale(1.2);
   transform: scale(1.2);
 }
+
+.dropdown {
+  padding-left: 1rem;
+  padding-top: 1rem;
+}
+
+.film-list{
+  list-style-type: none;
+  padding-top: 1rem;
+}
+
+
