@@ -1,31 +1,38 @@
 function validate() {
 let url = "http://localhost:8080/login"; 
-$('#submit').click(function (e) { 
-    let username = $('#usernaame').val();
-    let password = $('#password').val();
 
+  function submitClick(){
+    let username = $('#username').val();
+    let password = $('#password').val();
     let jsonData = JSON.stringify({
         'username':username, 'password':password
     }); 
+    const url =  "http://localhost:7777/login"; 
+
     $.ajax({
-        type: POST,
+        
+        type: 'POST',
         contentType: "application/json; charset=utf-8", 
         url: url,
         data: jsonData,
-        dataType: "dataType",
-        success: function (response) {
-            if(response.message==0){
+        cache: false, 
+        dataType: "json",
+        jsonp: false,
+        success: function (data, textStatus, jqXHR) {
+            var a = JSON.stringify(data);
+            if(data==0){
                 alert("Invalid log in information. Try again")
-                $('#usernaame').val('');
+                $('#username').val('');
                 $('#password').val('');
 
             }
-            else{
-
+            else if(data==1) {
+                alert('Logged in')
             }
         }
     });
-    });  
+    
+  
   }
   function openForm() {
     $("#myForm").show();
