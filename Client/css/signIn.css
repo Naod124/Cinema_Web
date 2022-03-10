@@ -130,6 +130,15 @@ a {
 #submit {
   background-color: #ffd634;
 }
+#submitEmail {
+  background-color: #ffd634;
+}
+#submitCode {
+  background-color: #ffd634;
+}
+#submitPasswords {
+  background-color: #ffd634;
+}
 #notMember {
   color: white;
 }

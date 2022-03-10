@@ -54,39 +54,39 @@
              <a href="#">Sign up</a></div>
       </div>
      <div class="form-popup" id="myForm">
-        <form action="/action_page.php" class="form-container">
+        <form action="#" onsubmit="false" class="form-container">
           <h2>Email for reset code</h2>
       
           <label for="Enter your email"></label>
-          <input type="text" placeholder="Enter Email" name="email" required>
+          <input id="email" type="text" placeholder="Enter Email" name="email" required>
       
-          <button id="submit" type="submit" onclick="secondForm()" class="btn">Send</button>
+          <button id="submitEmail" type="button" onclick="secondForm()" class="btn">Send</button>
           <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
       </div>
       <div class="form-popup" id="myForm1">
-        <form action="/action_page.php" class="form-container">
+        <form action="#" onsubmit="false" class="form-container">
           <h2>Reset code</h2>
       
           <label for="email"></label>
-          <input type="text" placeholder="Enter reset code" name="email" required>
+          <input id="resetCode" type="text" placeholder="Enter reset code" name="email" required>
       
-          <button id="submit" type="submit" onclick="thirdForm()" class="btn">Confirm</button>
+          <button id="submitCode" type="button" onclick="thirdForm()" class="btn">Confirm</button>
           <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
       </div>
       
-      <div class="form-popup" id="myForm2">
-        <form action="/action_page.php" class="form-container">
+      <div class="form-popup" id="myForm4">
+        <form action="#" onsubmit="false" class="form-container">
           <h2>Change Password</h2>
       
            <label for="psw"></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
+          <input id="oldPassword" type="password" placeholder="Enter Password" name="psw" required>
       
           <label for="psw"></label>
-          <input type="password" placeholder="Repeat Password" name="psw" required>
+          <input  id="newPassword" type="password" placeholder="Repeat Password" name="psw" required>
       
-          <button id="submit" type="submit" onclick="secondForm()" class="btn">Validate</button>
+          <button id="submitPasswords" type="button" onclick="fourthForm()" class="btn">Validate</button>
           <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
       </div>

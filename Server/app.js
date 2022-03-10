@@ -3,20 +3,28 @@ const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser'); 
 const db = require("./DB/Queries"); 
 const { json } = require("body-parser");
+var store = require('store');
+var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
 
 
-let tempName =''; 
-let tempPass =''; 
 const app = express(); 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+//app.use(express.json); 
 app.use(function(req, res, next) {
+
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Headers: Content-Type, Accept, X-Requested-With, Session");
+    res.header(" Access-Control-Allow-Methods: OPTIONS");
     next();
+
   });
+
+  var resetNum = Math.floor(Math.random() * 100000) + 1;
 
 // create application/json parser
 var jsonParser = bodyParser.json()
@@ -30,7 +38,6 @@ app.post('/login',jsonParser,function (request, response) {
     var username = request.body.username; 
     var password = request.body.password; 
 
-    console.log(username + " " + password); 
 
 		// Execute SQL query that'll select the account from the database based on the specified username and password
         var db= new sqlite3.Database('/Users/tekie/Desktop/Cinema_Web/Filmvisarna.sqlite3',(err)=>{
@@ -49,10 +56,89 @@ app.post('/login',jsonParser,function (request, response) {
 
 }); 
 
-app.get('/hello',function name(req, res){
-res.send('hello Cinema'); 
+app.post('/forgetPass', jsonParser, function (request,response) {
+    var username = request.body.email;
+   // console.log(username);  
 
+    store.set('username', username ); 
+    var db= new sqlite3.Database('C:\\Users\\Lili\\Desktop\\Cinema_Web\\Filmvisarna.sqlite3',(err)=>{
+        if(!err){
+            db.all('SELECT * FROM Customers where username="'+username+'"',(err,result)=>{
+                if(result.length==1){
+                    response.send('1');
+                    var transporter = nodemailer.createTransport(smtpTransport({
+                        service: 'gmail',
+                        host: 'smtp.gmail.com',
+                        auth: {
+                          user: 'cinemaweb455@gmail.com',
+                          pass: 'CiNeMa1234'
+                        }
+                      }));
+                      
+                      var mailOptions = {
+                        from: 'cinemaweb455@gmail.com',
+                        to: username,
+                        subject: 'Reset your Password',
+                        text: 'This is your reset code! ' + resetNum
+                      };
+                      
+                      transporter.sendMail(mailOptions, function(error, info){
+                        if (error) {
+                          console.log(error);
+                        } else {
+                          console.log('Email sent: ' + info.response);
+                        }
+                      });  
+                      
+                }
+                else if(result.length==0) {
+                    
+                    response.send('0')
+                }
+                else if(err){
+                response.send(err);     
+                }
+               
+            });
+        }
+     });
+
+  }); 
+
+
+
+  app.post('/resetCode',jsonParser, function (request,response) {
+    var email = store.get('username'); 
+
+   
+    var resCode = request.body.resetCode;
+    if (resCode==resetNum){
+        response.send('1');
+        
+    }else if(!(resCode==resetNum)) {
+        console.log('reset code was invalid');
+        response.send('0');
+      }
 });
 
+app.post('/newPass', function (request,response) {
+    
+    var oldPassword = request.body.oldPassword;
+    var newPassword = request.body.newPassword;
+    var email = store.get('username'); 
+
+    
+
+    if (oldPassword== newPassword){
+        var db= new sqlite3.Database('C:\\Users\\Lili\\Desktop\\Cinema_Web\\Filmvisarna.sqlite3',(err)=>{
+        db.all('UPDATE Customers SET password= "'+newPassword+'" where username="'+email+'"');
+        response.send("1"); 
+    });  
+
+    }
+    else {
+        response.send("0"); 
+    }
+});
 app.listen(7777); 
 module.exports = app;
