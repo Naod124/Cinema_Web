@@ -6,6 +6,9 @@ const { json } = require("body-parser");
 var store = require('store');
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
+const Database = require('better-sqlite3');
+const sqlQuerie = new Database('/Users/tekie/Desktop/Cinema_Web/Filmvisarna.sqlite3');
+
 
 
 const app = express(); 
@@ -38,9 +41,18 @@ app.post('/login',jsonParser,function (request, response) {
     var username = request.body.username; 
     var password = request.body.password; 
 
-
+    let stmt = sqlQuerie.prepare("SELECT * FROM Customers WHERE username= '"+username+"' AND password= '"+password+"'").all();
+    //let row = stmt.get(); 
+   // let count = stmt.count; 
+console.log(stmt.length); 
+    if(stmt.length==1){
+        response.send('1')
+    }
+    else if(stmt.length==0){
+        response.send('0')
+    }
 		// Execute SQL query that'll select the account from the database based on the specified username and password
-        var db= new sqlite3.Database('/Users/tekie/Desktop/Cinema_Web/Filmvisarna.sqlite3',(err)=>{
+      /*  var db= new sqlite3.Database('/Users/tekie/Desktop/Cinema_Web/Filmvisarna.sqlite3',(err)=>{
             if(!err){
                 db.all('SELECT * FROM Customers where username="'+username+'" and password="'+password+'"',(err,result)=>{
                     if(result.length==1){
@@ -52,7 +64,7 @@ app.post('/login',jsonParser,function (request, response) {
                     }
                 });
             }
-         });
+         });*/
 
 }); 
 
