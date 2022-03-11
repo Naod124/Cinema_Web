@@ -1,4 +1,5 @@
 const express = require("express"); 
+require('dotenv').config()
 const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser'); 
 const db = require("./DB/Queries"); 
@@ -7,8 +8,9 @@ var store = require('store');
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 const Database = require('better-sqlite3');
-const sqlQuerie = new Database('/Users/tekie/Desktop/Cinema_Web/Filmvisarna.sqlite3');
+const sqlQuerie = new Database('C:\\Users\\Lili\\Desktop\\Cinema_Web\\Filmvisarna.sqlite3');
 
+//console.log(process.env)
 
 
 const app = express(); 
@@ -68,61 +70,55 @@ console.log(stmt.length);
 
 }); 
 
-app.post('/forgetPass', jsonParser, function (request,response) {
+  app.post('/forgetPass', jsonParser, function (request,response) {
     var username = request.body.email;
    // console.log(username);  
 
     store.set('username', username ); 
-    var db= new sqlite3.Database('C:\\Users\\Lili\\Desktop\\Cinema_Web\\Filmvisarna.sqlite3',(err)=>{
-        if(!err){
-            db.all('SELECT * FROM Customers where username="'+username+'"',(err,result)=>{
-                if(result.length==1){
-                    response.send('1');
-                    var transporter = nodemailer.createTransport(smtpTransport({
-                        service: 'gmail',
-                        host: 'smtp.gmail.com',
-                        auth: {
-                          user: 'cinemaweb455@gmail.com',
-                          pass: 'CiNeMa1234'
-                        }
-                      }));
-                      
-                      var mailOptions = {
-                        from: 'cinemaweb455@gmail.com',
-                        to: username,
-                        subject: 'Reset your Password',
-                        text: 'This is your reset code! ' + resetNum
-                      };
-                      
-                      transporter.sendMail(mailOptions, function(error, info){
-                        if (error) {
-                          console.log(error);
-                        } else {
-                          console.log('Email sent: ' + info.response);
-                        }
-                      });  
-                      
-                }
-                else if(result.length==0) {
-                    
-                    response.send('0')
-                }
-                else if(err){
-                response.send(err);     
-                }
-               
-            });
-        }
-     });
+    let stmt = sqlQuerie.prepare("SELECT * FROM Customers WHERE username= '"+username+"'").all();
 
-  }); 
+    if(stmt.length==1){
+      response.send('1');
+
+var transporter = nodemailer.createTransport(smtpTransport({
+  service: process.env.SERVICE,
+  host: process.env.HOST,
+  auth: {
+    user: process.env.USER,
+    pass: process.env.PASS
+  }
+}));
+
+var mailOptions = {
+  from: process.env.USER,
+  to: username,
+  subject: 'Reset your Password',
+  text: 'This is your reset code! ' + resetNum
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});  
+      
+}
+else if(result.length==0) {
+    
+    response.send('0')
+}
+else if(err){
+response.send(err);     
+}
+}); 
 
 
 
   app.post('/resetCode',jsonParser, function (request,response) {
     var email = store.get('username'); 
 
-   
     var resCode = request.body.resetCode;
     if (resCode==resetNum){
         response.send('1');
@@ -139,13 +135,9 @@ app.post('/newPass', function (request,response) {
     var newPassword = request.body.newPassword;
     var email = store.get('username'); 
 
-    
-
     if (oldPassword== newPassword){
-        var db= new sqlite3.Database('C:\\Users\\Lili\\Desktop\\Cinema_Web\\Filmvisarna.sqlite3',(err)=>{
-        db.all('UPDATE Customers SET password= "'+newPassword+'" where username="'+email+'"');
-        response.send("1"); 
-    });  
+    sqlQuerie.prepare("UPDATE Customers SET password= '"+newPassword+"' where username='"+email+"'").run();
+    response.send("1");  
 
     }
     else {

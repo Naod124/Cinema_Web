@@ -1,0 +1,82 @@
+body, html {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ababab), color-stop(#bdbcbd), color-stop(#cfcecf), color-stop(#e1e0e1), to(#f4f2f3)) !important;
+  background-image: linear-gradient(to bottom, #ababab, #bdbcbd, #cfcecf, #e1e0e1, #f4f2f3) !important;
+  background-repeat: no-repeat !important;
+  height: 100% !important;
+  background-size: cover !important;
+  color: white !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+  -webkit-box-align: center !important;
+      -ms-flex-align: center !important;
+          align-items: center !important;
+  justify-items: center !important;
+}
+
+h1 {
+  padding: 50px !important;
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+h2 {
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.customButton {
+  background-color: #FFD634 !important;
+  font-size: x-large !important;
+  border-style: none !important;
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+  margin: auto !important;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  width: 10rem !important;
+  height: 3rem !important;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(62, 74, 93, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(62, 74, 93, 0.6);
+}
+
+.customButton.customButton:hover {
+  background-color: #fab006 !important;
+  color: #727272 !important;
+}
+
+.customButton.customButton:focus {
+  background-color: gray !important;
+  color: white !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.historyCard {
+  background-color: #C4C4C4 !important;
+  margin: auto;
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+  width: auto !important;
+  height: auto !important;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(62, 74, 93, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(62, 74, 93, 0.6);
+}
+
+#yellow {
+  color: #FFD634;
+}
+/*# sourceMappingURL=mybooking.css.map */
