@@ -80,10 +80,10 @@ console.log(stmt.length);
     if(stmt.length==1){
       response.send('1');
 
-var transporter = nodemailer.createTransport(smtpTransport({
-  service: process.env.SERVICE,
-  host: process.env.HOST,
-  auth: {
+     var transporter = nodemailer.createTransport(smtpTransport({
+    service: process.env.SERVICE,
+    host: process.env.HOST,
+    auth: {
     user: process.env.USER,
     pass: process.env.PASS
   }
