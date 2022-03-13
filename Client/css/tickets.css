@@ -407,7 +407,8 @@ p.text span {
   transform: translateX(0);
 }
 
-.close-btn {
+.close-btn,
+.buy-btn {
   width: 60px;
   height: 30px;
   cursor: pointer;
@@ -421,7 +422,9 @@ p.text span {
   transition: all 0.5s ease-in-out;
 }
 
-.close-btn:hover {
-  transform: scale(0.95) translateX(-5px);
+.close-btn:hover,
+.buy-btn:hover {
+  transform: scale(0.95) translateX(-3px);
   transition: all 0.5s ease-in-out;
 }
+
