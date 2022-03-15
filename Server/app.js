@@ -25,13 +25,13 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 //app.use(express.json()); 
- app.use(function (req, res, next) {
+/*  app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Headers: Content-Type, Accept, X-Requested-With, Session");
   res.header(" Access-Control-Allow-Methods: OPTIONS");
   next();
-});
+}); */
 
 app.use(express.static('../Client'));
 app.use(express.json({ limit: '100MB' }));
