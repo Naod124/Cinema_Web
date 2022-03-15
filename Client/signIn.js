@@ -1,11 +1,10 @@
-
 function submitClick() {
   let username = $('#username').val();
   let password = $('#password').val();
   let jsonData = JSON.stringify({
     'username': username, 'password': password
   });
-  const url = "http://localhost:7777/login";
+  const url = "http://localhost:7777/api/login";
 
   $.ajax({
 

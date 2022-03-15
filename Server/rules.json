@@ -1,0 +1,84 @@
+{
+  "visitor": {
+    "movies": {
+      "get": true
+    },
+    "cities": {
+      "get": true
+    },
+    "tickets": {
+      "get": true
+    },
+    "login": {
+      "post": true,
+      "get": true
+    },
+    "customers": {
+      "post": true,
+      "get":true
+    }
+  },
+  "user": {
+    "movies": {
+      "get": true
+    },
+    "cities": {
+      "get": true
+    },
+    "tickets": {
+      "get": true
+    },
+    "login": {
+      "post": true,
+      "get": true
+    }
+  },
+  "superadmin": {
+    "cinema": {
+      "get": true,
+      "post": true,
+      "put": true,
+      "delete": true
+    },
+    "cities": {
+      "get": true,
+      "post": true,
+      "put": true,
+      "delete": true
+    },
+    "movies": {
+      "get": true,
+      "post": true,
+      "put": true,
+      "delete": true
+    },
+    "customers": {
+      "get": true,
+      "post": true,
+      "put": true,
+      "delete": true
+    },
+    "tickets": {
+      "get": true,
+      "post": true,
+      "put": true,
+      "delete": true
+    },
+    "screening": {
+      "get": true,
+      "post": true,
+      "put": true,
+      "delete": true
+    },
+    "salons": {
+      "get": true,
+      "post": true,
+      "put": true,
+      "delete": true
+    },
+    "login": {
+      "get": true,
+      "delete": true
+    }
+  }
+}
