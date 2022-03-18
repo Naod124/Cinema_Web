@@ -3,6 +3,7 @@ const passwordEncryptor = require('./passwordEncryptor');
 
 //Determines which route are allowed for a certain userRole
 const acl = require('./acl');
+const { STATUS_CODES } = require('http');
 
 // Which table stores user data and name of password column
 const userTable = 'customers';
@@ -90,7 +91,7 @@ module.exports = function setupRESTapi(app, databaseConnection) {
     });
 
     // Add a post route for the table
-    app.post('/api/' + name, (req, res) => {
+     app.post ('/api/' + name, (req, res) => {
       // if this is the user table then encrypt the password
       if (name === userTable) {
        //changes the user role to just "user"
@@ -99,14 +100,12 @@ module.exports = function setupRESTapi(app, databaseConnection) {
         req.body[passwordField] =
           passwordEncryptor(req.body[passwordField]);
       }
-
-      console.log("WHY");
+      
       console.log(req.body);
-      runQuery(name, req, res, req.body, `
+    runQuery(name, req, res, req.body, `
         INSERT INTO ${name} (${Object.keys(req.body)})
-        VALUES (${Object.keys(req.body).map(x => ':' + x)})
-      `);
-      console.log("AHA");
+        VALUES (${Object.keys(req.body).map(x => ':' + x)})`
+      );
     });
 
     // And put/patch routes

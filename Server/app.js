@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const session = require('express-session');
 const betterstore = require('better-express-store');
 require('dotenv').config();
@@ -25,19 +26,26 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 //app.use(express.json()); 
-/*  app.use(function (req, res, next) {
+  app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Headers: Content-Type, Accept, X-Requested-With, Session");
   res.header(" Access-Control-Allow-Methods: OPTIONS");
   next();
-}); */
+}); 
 
-app.use(express.static('../Client'));
+app.use(express.static(path.resolve(__dirname,"../","Client")));
 app.use(express.json({ limit: '100MB' }));
 app.listen(port, () =>console.log('Listening on http://localhost:' + port));
+//Redirect all requests to index.html
+
 const specialRESTAPI = require('../Server/special-rest-routs');
 specialRESTAPI(app, sqlQuerie);
 const setupRESTapi = require('../Server/rest_API');
 setupRESTapi(app, sqlQuerie);
 module.exports = app;
+
+ app.all("/*",(req,res)=>{
+  res.set('Content-Type', 'text/html');
+  res.sendFile(path.resolve(__dirname,"../Client","index.html"));
+}); 

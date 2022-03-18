@@ -136,7 +136,7 @@ app.post('/tickets', function (request, response) {
   }
 });
 
-app.post('/customers' , function (request, response) {
+/* app.post('/customers' , function (request, response) {
     var firstName = request.body.firstName;
     var lastName = request.body.lastName;
     var username = request.body.username;
@@ -145,5 +145,5 @@ app.post('/customers' , function (request, response) {
     var userRole =request.body[userRoleField] = 'user';
     sqlQuerie.prepare("INSERT INTO customers( firstName,lastName,username,password,userRole) VALUES (" + "'" + firstName + "'" + ", '" + lastName + "'" + ", '" + username + "'" + ", '" + password+ "'" + ", '" +userRole + "') ").run();
     response.send("DONE");
-  });
+  }); */
 }

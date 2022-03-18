@@ -1,3 +1,4 @@
+
 document.querySelector('body').addEventListener('submit', async (event) => {
     let target = event.target;
     if (!target.closest('form[name="registration"]')) { return; }
@@ -9,6 +10,10 @@ document.querySelector('body').addEventListener('submit', async (event) => {
   let requestBody = {};
   for (let element of formElements) {
     if (element.type === 'submit') { continue; }
+    if (element.value==null){
+        alert("some Fields are not filled yet .. please fill out all the empty fields")
+        return ;
+    }
     requestBody[element.name] = element.value;
   }
  
@@ -20,6 +25,7 @@ document.querySelector('body').addEventListener('submit', async (event) => {
     return;
   }
 
+  if (requestBody)
     delete requestBody.confirm;
     console.log(requestBody);
     let result = {};
@@ -45,4 +51,5 @@ document.querySelector('body').addEventListener('submit', async (event) => {
         <h3>Welcome ${JSON.stringify(requestBody.firstName)}!</h3>
         <p>You are now successfully registrered as a member!</p>
       `;
+
 }); 

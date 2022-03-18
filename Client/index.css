@@ -1,4 +1,6 @@
-@import "../css/normalize.css";
+@import "/Client/normalize.css";
+@import "/Client/css/signIn.css";
+@import "/Client/css/tickets.css";
 @import url("https://fonts.googleapis.com/css?family=Raleway");
 
 :root {
@@ -145,8 +147,10 @@ padding-bottom: 2.5rem;
 .navbar {
   display: flex;
   position: relative;
+  margin-bottom: 3rem;
   justify-content: space-between;
   align-items: center;
+  background-color:black;
   color: var(--color-headings);
   z-index: 100;
 }

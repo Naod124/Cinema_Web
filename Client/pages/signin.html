@@ -1,0 +1,74 @@
+<body>
+  <script src="/Client/js/signIn.js"></script>
+
+<div class="container">
+<h1>
+  <span>We are&nbsp</span>
+  <span id="yellow">happy&nbsp</span>
+  <span>to have you as a&nbsp</span>
+  <span id="yellow">member!</span>
+</h1>
+  <div class="card cinemaCard">
+    <div class="card-body">
+      <h5 class="card-title"><h2><span id="yellow">Log</span> <span>In</span></h2></h5>
+      <form name="login">
+      <div>
+        <label for="username" class="form-label">Email address</label>
+        <input type="email" class="form-control" name = "username" id="username" aria-describedby="emailHelp" placeholder="Enter your email" required>
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div>
+          <label for="inputPassword" class="form-label">Password</label>
+          <input type="password" name = "password" id="password" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Password" required>
+          <div id="passwordHelpBlock" class="form-text">
+            <div>
+        <a  id="forget" onclick="openForm()"
+          href="#">ForgetPassword?</a>
+        </div>
+      </div>
+      
+    </form>
+      <a class="btn" class="links" value="signup">Sign Up?</a>
+      <button class="btn customButton" id="submit" type="submit" onclick="submitClick()" value="Sign in">Sign in</button>
+    </div>
+    <div class="form-popup" id="myForm">
+      <form action="#" onsubmit="false" class="form-container">
+        <h2>Email for reset code</h2>
+    
+        <label for="Enter your email"></label>
+        <input id="email" type="text" placeholder="Enter Email" name="email" required>
+    
+        <button id="submitEmail" type="button" onclick="secondForm()" class="btn">Send</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      </form>
+    </div>
+    <div class="form-popup" id="myForm1">
+      <form action="#" onsubmit="false" class="form-container">
+        <h2>Reset code</h2>
+    
+        <label for="email"></label>
+        <input id="resetCode" type="text" placeholder="Enter reset code" name="email" required>
+    
+        <button id="submitCode" type="button" onclick="thirdForm()" class="btn">Confirm</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      </form>
+    </div>
+    
+    <div class="form-popup" id="myForm4">
+      <form action="#" onsubmit="false" class="form-container">
+        <h2>Change Password</h2>
+    
+         <label for="psw"></label>
+        <input id="oldPassword" type="password" placeholder="Enter Password" name="psw" required>
+    
+        <label for="psw"></label>
+        <input  id="newPassword" type="password" placeholder="Repeat Password" name="psw" required>
+    
+        <button id="submitPasswords" type="button" onclick="fourthForm()" class="btn">Validate</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      </form>
+    </div>
+  </div>
+  </div>
+</div>
+</body>
