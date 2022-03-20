@@ -6,7 +6,6 @@ var path = require('path');
 
 module.exports=function specialrouts(app,db){
 // Code from APP.js is here //
-var resetNum = Math.floor(Math.random() * 100000) + 1;
 
 // create application/json parser
 var jsonParser = bodyParser.json();
@@ -50,6 +49,9 @@ app.post('/api/login', jsonParser, function (request, response) {
 app.post('/forgetPass', jsonParser, function (request, response) {
   var username = request.body.email;
   // console.log(username);  
+  var resetNum = Math.floor(Math.random() * 100000) + 1;
+
+   store.set('random', resetNum); 
 
   store.set('username', username);
   let stmt = db.prepare("SELECT * FROM Customers WHERE username= '" + username + "'").all();
@@ -95,7 +97,7 @@ app.post('/forgetPass', jsonParser, function (request, response) {
 
 app.post('/resetCode', jsonParser, function (request, response) {
   var email = store.get('username');
-
+ var resetNum = store.get('random'); 
   var resCode = request.body.resetCode;
   if (resCode == resetNum) {
     response.send('1');
@@ -104,6 +106,7 @@ app.post('/resetCode', jsonParser, function (request, response) {
     console.log('reset code was invalid');
     response.send('0');
   }
+  store.remove('random')
 });
 
 app.post('/newPass', function (request, response) {
