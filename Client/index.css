@@ -4,10 +4,10 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway");
 
 :root {
-  --color-primary: #ffd634;
+  --color-primary : #ffd634;
   --color-headings: #fff;
-  --color-body: linear-gradient(#ababab, #fff);
-  --color-neutral: #565960;
+  --color-body    : linear-gradient(#ababab, #fff);
+  --color-neutral : #565960;
 }
 
 * {
@@ -19,8 +19,8 @@
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  margin    : 0;
+  padding   : 0;
   background: #ababab !important;
 }
 
@@ -34,90 +34,92 @@ body {
 
 .carousel-slide {
   position: absolute;
-  width: 100%;
-  height: 40rem;
-  top: -13rem;
+  width   : 100%;
+  height  : 40rem;
+  top     : -13rem;
 }
 
 .home-h1 {
-  font-size: 3.5rem;
-  font-weight: bolder;
-  color: white;
-  margin-left: 13rem;
-  margin-top: 5rem;
-  width: 12em;
-  z-index: 10;
-  position: relative;
+  font-size       : 3.5rem;
+  font-weight     : bolder;
+  color           : white;
+  margin-left     : 12.9rem;
+  width           : 12em;
+  z-index         : 10;
+  position        : relative;
+  text-align      : start;
+  display         : block;
 }
 
 .home-h2 {
-  font-size: 0.8rem;
-  color: white;
-  margin-left: 13rem;
-  margin-top: 0rem;
-  margin-bottom: 1rem;
-  width: 16rem;
-  z-index: 10;
-  position: relative;
+  font-size       : 0.8rem;
+  color           : white;
+  margin-left     : 12.9rem;
+  margin-bottom   : 1rem;
+  width           : 16rem;
+  z-index         : 10;
+  position        : relative;
+  text-align      : left;
+  display         : block;
 }
 
 .trailer-button {
   background-color: #ffd634;
-  font-size: 1rem;
-  color: black;
-  font-weight: 900;
-  margin-left: 13rem;
-  width: 170px;
-  height: 45px;
-  border: none;
-  cursor: pointer;
-  z-index: 10;
-  position: relative;
+  font-size       : 1rem;
+  color           : black;
+  font-weight     : 900;
+  margin-left     : 13rem;
+  width           : 170px;
+  height          : 45px;
+  border          : none;
+  cursor          : pointer;
+  z-index         : 10;
+  position        : relative;
 }
 
 i {
-  position: relative;
+  position   : relative;
   margin-left: -1.8rem;
-  cursor: pointer;
-  z-index: 10;
+  cursor     : pointer;
+  z-index    : 10;
 }
 
 .button-darken {
   transition: 1.6s;
-  filter: brightness(80%);
-  color: white;
+  filter    : brightness(80%);
+  color     : white;
 }
 
 .movie-container {
-  position: relative;
-  height: 50rem;
+  position           : relative;
+  height             : 50rem;
   /* bottom          : 0; */
-  top: 10rem;
-  z-index: 10;
-  width: 80%;
-  background-color: white;
+  top                : 10rem;
+  z-index            : 10;
+  width              : 80%;
+  background-color   : white;
 }
 
 .filters {
-  display: flex;
-  margin-right: 2rem;
+  display        : flex;
+  margin-right   : 2rem;
   justify-content: space-around;
-  list-style: none;
-  margin-top: 2rem;
+  list-style     : none;
+  margin-top     : 2rem;
 }
 
 .filters li a {
-  text-decoration: none;
+  text-decoration    : none;
   /* background-color: #565960; */
-  color: black;
-  display: block;
-  height: 3rem;
-  width: 8rem;
-  font-size: 0.9rem;
-  font-weight: bold;
-  border-bottom: 3px solid transparent;
-  transition: border-bottom 0.5s;
-  text-align: center;
+  color              : black;
+  display            : block;
+  height             : 3rem;
+  width              : 8rem;
+  font-size          : 0.9rem;
+  font-weight        : bold;
+  border-bottom      : 3px solid transparent;
+  transition         : border-bottom 0.5s;
+  text-align         : center;
 }
 
 .filters li a:hover {
@@ -125,39 +127,29 @@ i {
 }
 
 .movie-list {
-  display: grid;
+  display              : grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 2px;
+  grid-gap             : 2px;
 }
 
-.movieImage{
-padding-bottom: 2.5rem;
+.movieImage {
+  padding-bottom: 2.5rem;
 }
-
-
-/* .movie-list .item {
-  position        : relative;
-  margin-left     : 4rem;
-  margin-top      : 2rem;
-  text-align      : center;
-  width           : 15%;
-  height          : auto;
-} */
 
 .navbar {
-  display: flex;
-  position: relative;
-  margin-bottom: 3rem;
-  justify-content: space-between;
-  align-items: center;
-  background-color:black;
-  color: var(--color-headings);
-  z-index: 100;
+  display            : flex;
+  position           : relative;
+  margin-bottom      : 3rem;
+  justify-content    : space-between;
+  align-items        : center;
+  /* background-color:black; */
+  color              : var(--color-headings);
+  z-index            : 100;
 }
 
 .company-name {
   font-size: 1.5rem;
-  margin: 0.5rem;
+  margin   : 0.5rem;
 }
 
 span {
@@ -170,7 +162,7 @@ span {
 
 .navbar-links ul {
   display: flex;
-  margin: 0;
+  margin : 0;
   padding: 0;
 }
 
@@ -179,11 +171,11 @@ span {
 }
 
 .navbar-links li a {
-  display: block;
+  display        : block;
   text-decoration: none;
-  color: var(--color-headings);
-  padding: 2.5rem;
-  opacity: 0.65;
+  color          : var(--color-headings);
+  padding        : 2.5rem;
+  opacity        : 0.65;
 }
 
 #login {
@@ -199,33 +191,33 @@ span {
 }
 
 .navbar-links .active {
-  color: var(--color-primary);
+  color      : var(--color-primary);
   font-weight: bolder;
-  opacity: 1;
+  opacity    : 1;
 }
 
 .toggle-button {
-  position: absolute;
-  top: 0.75rem;
-  right: 1rem;
-  display: none;
-  flex-direction: column;
+  position       : absolute;
+  top            : 0.75rem;
+  right          : 1rem;
+  display        : none;
+  flex-direction : column;
   justify-content: space-between;
-  width: 30px;
-  height: 21px;
+  width          : 30px;
+  height         : 21px;
 }
 
 .toggle-button .bar {
-  height: 3px;
-  width: 100%;
+  height          : 3px;
+  width           : 100%;
   background-color: var(--color-headings);
-  border-radius: 10px;
+  border-radius   : 10px;
 }
 
 @media (max-width: 800px) {
   .navbar {
     flex-direction: column;
-    align-items: flex-start;
+    align-items   : flex-start;
   }
 
   .toggle-button {
@@ -234,11 +226,11 @@ span {
 
   .navbar-links {
     display: none;
-    width: 100%;
+    width  : 100%;
   }
 
   .navbar-links ul {
-    width: 100%;
+    width         : 100%;
     flex-direction: column;
   }
 
@@ -260,44 +252,42 @@ span {
 }
 
 main {
-  display: flex;
-  flex-wrap: wrap;
+  display        : flex;
+  flex-wrap      : wrap;
   justify-content: center;
 }
 
 .movie {
-  width: 300px;
-  margin: 1rem;
+  width           : 300px;
+  margin          : 1rem;
   background-color: var(--color-body);
-  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
-  position: relative;
-  overflow: hidden;
-  border-radius: 3px;
-  cursor: pointer;
+  box-shadow      : 0 4px 5px rgba(0, 0, 0, 0.2);
+  position        : relative;
+  overflow        : hidden;
+  border-radius   : 3px;
+  cursor          : pointer;
 }
 
 .movie img {
-  width: 100%;
-  height: 100%;
+  width             : 100%;
+  height            : 100%;
   -webkit-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -o-transition     : all 0.5s ease;
+  transition        : all 0.5s ease;
 }
 
 .movie img:hover {
   -webkit-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  transform: scale(1.2);
+  -ms-transform    : scale(1.2);
+  transform        : scale(1.2);
 }
 
 .dropdown {
   padding-left: 1rem;
-  padding-top: 1rem;
+  padding-top : 1rem;
 }
 
-.film-list{
+.film-list {
   list-style-type: none;
-  padding-top: 1rem;
+  padding-top    : 1rem;
 }
-
-

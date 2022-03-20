@@ -1,90 +1,3 @@
-/* import movies from "./js/movies.js";
-import tickets from "./js/tickets.js";
-import signin from "./js/signIn.js";
-import signup from "./js/signUp.js";
- */
-/* 
-window.onload = function()
-{
-    const path = window.location.pathname.split("/");
-
-    switch(path[1])
-    {
-        case "":
-        {
-            loadPage("home");
-            break;
-        }
-        case "movies":
-        {
-            loadPage("movies");
-            break;
-        }
-        case "tickets":
-        {
-            loadPage("tickets");
-            break;
-        }
-        case "mybooking":
-          {
-              loadPage("mybooking");
-              break;
-          }
-          case "signIn":
-            {
-                loadPage("signIn");
-                break;
-            }
-            case "signup":
-            {
-                loadPage("signup");
-                break;
-            }
-        default:
-        {
-            loadPage("404");
-            break;
-        }
-    }
-
-    document.querySelectorAll(".links").forEach((item) =>
-    {
-        item.addEventListener("click", async (event)=>
-        {
-            const path = item.getAttribute("value");
-            event.preventDefault();
-            loadPage(path);
-             
-            if(path == "home")
-            {
-                window.history.pushState("", "", "/");
-                return;
-            }
-
-            window.history.pushState("", "", path);
-        });
-    });
-    
-      
-    function loadPage($path)
-    {
-        if($path == "") return;
-        const container = document.getElementById("maincontainer");
-        
-        const request = new XMLHttpRequest();
-        request.open("GET", "./pages/" + $path + ".html");
-        request.send();
-        request.onload = function()
-        {
-            if(request.status == 200)
-            {
-                container.innerHTML = request.responseText;
-                document.title = $path;
-            }
-        }
-    }
-
-} */
 document.querySelector('body').addEventListener('click', function (event) {
   // event = an object with info about the event
   // event.target = the innermost HTML-element I clicked
@@ -142,10 +55,23 @@ async function router() {
   content.includes('<title>Error</title>') && location.replace('/');
   // replace the content of the main element
   document.querySelector('main').innerHTML = content;
-  // run the productLister function (in another file)
-  // if the route is '/partials/products.html';
-  //route === '/partials/products.html' && loadJsonAndDisplayProducts();
+
+  $(document).ready(function () {
+    $("button").ready(function () {
+      if ($("button").length) {
+        home();
+      }
+    });
+
+    $(document.getElementsByClassName("seat-container")).ready(function () {
+      if ($(document.getElementsByClassName("seat-container")).length) {
+        tickets();
+      }
+    });
+
+  });
 }
+
 // runt the router when using the back/forward buttons
 window.addEventListener('popstate', router);
 
@@ -158,5 +84,3 @@ const navbarLinks = document.getElementsByClassName("navbar-links")[0];
 toggleButton.addEventListener("click", () => {
   navbarLinks.classList.toggle("active");
 });
-
-

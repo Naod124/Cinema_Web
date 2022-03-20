@@ -122,17 +122,32 @@ app.post('/newPass', function (request, response) {
   }
 });
 
-app.post('/tickets', function (request, response) {
+app.post('/api/tickets', function (request, response) {
 
   var total = request.body.totalPrice;
   var date = request.body.date;
   var seatNumber = request.body.seatNum;
+  var customerId = request.body.customerId;
 
   if (total > 0) {
-    db.prepare("INSERT INTO tickets (date, seatNum, totalPrice) VALUES (" + "'" + date + "'" + ", '" + seatNumber + "', " + total + ")").run();
+    db.prepare("INSERT INTO tickets (date, seatNum, totalPrice, customerId) VALUES (" + "'" + date + "'" + ", '" + seatNumber + "', " + total + ", '" + customerId +"')").run();
     response.send("1");
   } else {
     response.send("0");
+  }
+});
+
+app.post('/api/takenSeats', jsonParser, function (request, response) {
+
+  var date = request.body.date;
+
+  let stmt = db.prepare("SELECT * FROM tickets WHERE date like  '%" + date + "%'").all();
+
+  if (stmt.length > 0) {
+    response.send(stmt);
+  }
+  else if (stmt.length == 0) {
+    response.send('0')
   }
 });
 
