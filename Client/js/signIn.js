@@ -34,9 +34,16 @@ function openForm() {
 }
 
 function closeForm() {
+
   $("#myForm").hide();
   $("#myForm1").hide();
   $("#myForm2").hide();
+  $("#myForm4").hide();
+  $('#email').val(' ');
+  $('#password').val(' ');
+  $('#password1').val(' ');
+  $('#resetCode').val(' ');
+
 }
 
 
@@ -67,7 +74,10 @@ function secondForm() {
 
       }
       else if (data == 1) {
+        $('#email').val('');
         $("#myForm1").show();
+        $("#myForm").hide();
+
       }
     }
   });
@@ -101,6 +111,7 @@ function thirdForm() {
 
       }
       else if (data == 1) {
+        $('#resetCode').val('');
         $("#myForm").hide();
         $("#myForm1").hide();
         $("#myForm4").show();
@@ -138,7 +149,10 @@ function fourthForm() {
 
       }
       else if (data == 1) {
+        $('#password').val('');
+        $('#password1').val('');
         alert('Password updated')
+        closeForm()
       }
     }
   });
