@@ -70,7 +70,6 @@ function tickets() {
 
   function populateUIFromLocalStorage() {
     selectedSeats = JSON.parse(localStorage.getItem("selectedSeats"));
-    // console.log(selectedSeats);
     if (selectedSeats !== null && selectedSeats.length > 0) {
       seats.forEach((seat, index) => {
         if (selectedSeats.indexOf(index) > -1) {
@@ -97,13 +96,12 @@ function tickets() {
   function saveTicketToDb() {
     const url = "http://localhost:7777/api/tickets";
 
-    today = new Date();
     const seatsIndex = [...selectedSeats].map(function (seat) {
       return [...seats].indexOf(seat);
     });
 
     let total = totalPrice.innerText;
-    let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    let date = dateControl.value.toString().slice(0, 5) + dateControl.value.toString().slice(6);
     let seatNum = seatsIndex.join("-");
     let customerId = "wael-natafji@hotmail.com";
 
@@ -125,7 +123,6 @@ function tickets() {
           console.log("Failed");
         }
         else if (data == 1) {
-          console.log("Success");
           alert("Ticket bought successfully!");
           for (i = 0; i < selectedSeats.length; i++) {
             selectedSeats[i].classList.add('taken');
@@ -140,11 +137,8 @@ function tickets() {
     });
   }
 
-  function retrieveTakenSeats() {
+  function retrieveTakenSeats(date) {
     const url = "http://localhost:7777/api/takenSeats";
-
-    today = new Date();
-    let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
     let jsonData = JSON.stringify({
       'date': date
@@ -161,7 +155,8 @@ function tickets() {
       jsonp: false,
       success: function (data, textStatus, jqXHR) {
         if (data == 0) {
-          console.log("Failed");
+          alert("No reservations found for this date")
+          updateTakenSeats(data);
         }
         else if (data.length > 0) {
           updateTakenSeats(data);
@@ -173,38 +168,49 @@ function tickets() {
   function updateTakenSeats(data) {
     let number = '';
     const takenSeats = [];
-    data.forEach((element, index) => {
-
-      for(let i = 0; i <= element.seatNum.length - 1; i++){
-
-        if (element.seatNum[i] === '-'){
-          takenSeats[number] = number;
-          number = '';
-        } else {
-          number += element.seatNum[i];
-          console.log(number);
-        }
-
-        if ((i + 1) === element.seatNum.length) {
-          takenSeats[number] = number;
-          number = '';
-        }
-      }
-
-      console.log(takenSeats);
-    });
-
     seats.forEach((seat, index) => {
-      if (takenSeats[index] > 0) {
-        seat.classList.add("taken");
-        seat.classList.remove("selected");
-      }
+      seat.classList.remove("taken");
+      // seat.classList.remove("selected");
     });
 
+    if (data != 0) {
+      data.forEach((element, index) => {
+
+        for (let i = 0; i <= element.seatNum.length - 1; i++) {
+
+          if (element.seatNum[i] === '-') {
+            takenSeats[number] = number;
+            number = '';
+          } else {
+            number += element.seatNum[i];
+          }
+
+          if ((i + 1) === element.seatNum.length) {
+            takenSeats[number] = number;
+            number = '';
+          }
+        }
+      });
+
+      seats.forEach((seat, index) => {
+        if (takenSeats[index] > 0) {
+          seat.classList.add("taken");
+          seat.classList.remove("selected");
+        }
+      });
+    }
   }
+
+  today = new Date();
+  let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+  var dateControl = document.querySelector('input[type="date"]');
+  dateControl.value = today.getFullYear() + '-0' + (today.getMonth() + 1) + '-' + today.getDate();;
+
+  dateControl.addEventListener("change", () => {
+    retrieveTakenSeats(dateControl.value.toString().slice(0, 5) + dateControl.value.toString().slice(6));
+  })
 
   populateUIFromLocalStorage();
   updateSelectedSeat();
-  retrieveTakenSeats();
-
+  retrieveTakenSeats(date);
 }
