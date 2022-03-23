@@ -103,8 +103,10 @@ function tickets() {
     let total = totalPrice.innerText;
     let date = dateControl.value.toString().slice(0, 5) + dateControl.value.toString().slice(6);
     let seatNum = seatsIndex.join("-");
-    let customerId = "wael-natafji@hotmail.com";
+   // let customerId = "wael-natafji@hotmail.com";
+   let customerId = localStorage.getItem("email"); 
 
+   console.log(customerId);
     let jsonData = JSON.stringify({
       'date': date, 'seatNum': seatNum, 'totalPrice': total, 'customerId': customerId
     });

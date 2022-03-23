@@ -23,14 +23,15 @@
           <div id="passwordHelpBlock" class="form-text">
             <div>
         <a  id="forget" onclick="openForm()" 
+
           href="javascript: void(0);">ForgetPassword?</a>
         </div>
+        <a class="btn" class="links" value="signup">Sign Up?</a>
+        <a class="btn customButton" id="submit" href="#" type="button" onclick="submitClick()" value="Sign in">Sign in</a>
       </div>
-      
+     
     </form>
-      <a class="btn" class="links" value="signup">Sign Up?</a>
-      <button class="btn customButton" id="submit" type="submit" onclick="submitClick()" value="Sign in">Sign in</button>
-    </div>
+     
     <div class="form-popup" id="myForm">
       <form action="#" onsubmit="false" class="form-container">
         <h2>Email for reset code</h2>
@@ -67,6 +68,7 @@
         <button id="submitPasswords" type="button" onclick="fourthForm()" class="btn">Validate</button>
         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
       </form>
+    </div>
     </div>
   </div>
   </div>

@@ -3,6 +3,10 @@ var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 var store = require('store');
 var path = require('path');
+var jwt = require('jsonwebtoken'); 
+require('dotenv').config({ path: "Server/process.env" });
+var userAuth = 'username'; 
+console.log(process.env.HOST);
 
 module.exports=function specialrouts(app,db){
 // Code from APP.js is here //
@@ -12,39 +16,71 @@ var jsonParser = bodyParser.json();
 
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
-
-app.post('/api/login', jsonParser, function (request, response) {
+var username = "Naoderi36@gmail.com"; 
+let firstName = db.prepare("SELECT firstName FROM customers WHERE username= '" + username+"'").get(); 
+console.log(JSON.stringify(firstName.firstName)); 
+app.post('/api/login' ,jsonParser, function (request, response) {
   //console.log(db.getUser('Naoderi36@gmail.com', '12345'));
+  response.type('application/json');
 
   var username = request.body.username;
   var password = request.body.password;
 
   let stmt = db.prepare("SELECT * FROM customers WHERE username= '" + username + "' AND password= '" + password + "'").all();
-  //let row = stmt.get(); 
-  // let count = stmt.count; 
-  console.log(stmt.length);
+  let firstName = db.prepare("SELECT firstName FROM customers WHERE username= '" + username+"'").get(); 
+
+
+  
+  const user = {name: username}; 
+
   if (stmt.length == 1) {
-    response.send('1');
+   // response.json({a:'1'});
+   request.session.user = username;
+    request.session.admin = true;
+   response.send(firstName.firstName); 
+  // jwt.sign(user, process.env.TOKEN, { expiresIn: '1800s' }); 
+
+    store.set('username', username); 
+
+    console.log(store.get('username')); 
+
+
   }
   else if (stmt.length == 0) {
-    response.send('0')
+    //response.json({a:'0'})
+    response.send('0'); 
   }
-  // Execute SQL query that'll select the account from the database based on the specified username and password
-  /*  var db= new sqlite3.Database('/Users/tekie/Desktop/Cinema_Web/Filmvisarna.sqlite3',(err)=>{
-        if(!err){
-            db.all('SELECT * FROM Customers where username="'+username+'" and password="'+password+'"',(err,result)=>{
-                if(result.length==1){
-                     response.send('1')
-                }
-                else if(result.length==0) {
-                    
-                 response.send('0')
-                }
-            });
-        }
-     });*/
 
+  //console.log(response.headersSent); 
 });
+var auth = function(req, res, next) {
+  var verifyUser = store.get('username'); 
+  if (req.session && req.session.user === verifyUser && req.session.admin)
+    return next;
+  else
+    return res.sendStatus(401);
+};
+
+app.get("/api/posts", function (req,res) {
+  var hour = 3600000
+  req.session.cookie.expires = new Date(Date.now() + hour);
+  if(req.session.user){
+  res.send(req.session.user); 
+  }
+}); 
+
+
+/*
+function verifyToken (req,res,next) { 
+  const bearerHeader = req.headers['authorization']
+  if (typeof bearerHeader !== 'undefined') {
+    const token = bearerHeader && bearerHeader.split(' ')[1]
+    if (token == null) return res.sendStatus(401)
+    req.token = token; 
+    next(); 
+   }
+
+ }*/
 
 app.post('/forgetPass', jsonParser, function (request, response) {
   var username = request.body.email;
@@ -60,8 +96,8 @@ app.post('/forgetPass', jsonParser, function (request, response) {
     response.send('1');
 
     var transporter = nodemailer.createTransport(smtpTransport({
-      service: process.env.SERVICE,
       host: process.env.HOST,
+      port: 465, 
       auth: {
         user: process.env.USER,
         pass: process.env.PASS
@@ -96,12 +132,11 @@ app.post('/forgetPass', jsonParser, function (request, response) {
 
 
 app.post('/resetCode', jsonParser, function (request, response) {
-  var email = store.get('username');
+   email = store.get('username');
  var resetNum = store.get('random'); 
   var resCode = request.body.resetCode;
   if (resCode == resetNum) {
     response.send('1');
-
   } else if (!(resCode == resetNum)) {
     console.log('reset code was invalid');
     response.send('0');
@@ -133,9 +168,10 @@ app.post('/api/tickets', function (request, response) {
   var customerId = request.body.customerId;
 
   if (total > 0) {
+      
     db.prepare("INSERT INTO tickets (date, seatNum, totalPrice, customerId) VALUES (" + "'" + date + "'" + ", '" + seatNumber + "', " + total + ", '" + customerId +"')").run();
-    response.send("1");
-  } else {
+  response.send("1");
+} else {
     response.send("0");
   }
 });

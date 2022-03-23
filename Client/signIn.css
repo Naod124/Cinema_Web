@@ -159,6 +159,9 @@ form .field {
 form .field.shake {
   animation: shake 0.3s ease-in-out;
 }
+#submit{
+  color: #e7c53e ;
+}
 @keyframes shake {
   0%,
   100% {
@@ -268,7 +271,13 @@ form input[type="submit"]:hover {
   border: 3px solid #ababab;
   z-index: 9;
 }
-
+#myForm{
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #ababab;
+  z-index: 9;
+}
 /* Add styles to the form container */
 .form-container {
   max-width: 300px;

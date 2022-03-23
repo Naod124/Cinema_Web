@@ -1,33 +1,52 @@
+
+//alert('hello world'); 
+//closeForm();
+
 function submitClick() {
-  let username = $('#username').val();
-  let password = $('#password').val();
+ // alert('hello')
+ let username = $('#username').val();
+ let password = $('#password').val();
   let jsonData = JSON.stringify({
     'username': username, 'password': password
   });
   const url = "http://localhost:7777/api/login";
-
-  $.ajax({
-
-    type: 'POST',
-    contentType: "application/json; charset=utf-8",
-    url: url,
-    data: jsonData,
-    cache: false,
-    dataType: "json",
-    jsonp: false,
-    success: function (data, textStatus, jqXHR) {
-      if (data == 0) {
+  var representationOfDesiredState = "The cheese is old and moldy, where is the bathroom?";
+  
+  var client = new XMLHttpRequest();
+  
+  client.open("POST", url, false);
+  client.setRequestHeader("Content-Type", "application/json");
+  client.send(jsonData);
+  
+  if (client.status == 200){
+     // alert("The request succeeded!\n\nThe response representation was:\n\n" + client.responseText)
+      if(client.response==0){
         alert("Invalid log in information. Try again")
         $('#username').val('');
         $('#password').val('');
+      }
+      //else if (JSON.stringify(data.data) == 1) {
+        else {
+          localStorage.setItem("email", username); 
+          localStorage.setItem("firstName", client.response)
+          $('#login').text("Hi "+localStorage.getItem("firstName"));
+          history.pushState({}, '', 'http://localhost:7777'); 
+          $("#login").attr("disabled", true);
 
-      }
-      else if (data == 1) {
-        alert('Logged in')
-      }
+
+            }
+            //window.location.href("../Client/index.html"); 
+            //history.pushState({}, null,path.resolve(__dirname,"../Client","index.html"));
+
+
     }
-  });
+  else{
+      alert("The request did not succeed!\n\nThe response status was: " + client.status + " " + client.statusText + ".");
+  }
+
 }
+
+
 
 function openForm() {
   $("#myForm").show();
@@ -49,6 +68,8 @@ function closeForm() {
 
 
 function secondForm() {
+  $("#myForm").hide();
+
   let email = $('#email').val();
 
 
