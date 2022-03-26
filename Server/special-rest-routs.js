@@ -184,6 +184,7 @@ module.exports = function specialrouts(app, db) {
       req.token = token;
       next();
     }
+  }
 
     app.post('/forgetPass', jsonParser, function (request, response) {
       var username = request.body.email;
@@ -263,58 +264,60 @@ module.exports = function specialrouts(app, db) {
       }
     });
 
-    app.post('/api/tickets', function (request, response) {
+    // app.post('/api/tickets', function (request, response) {
 
-      var total = request.body.totalPrice;
-      var date = request.body.date;
-      var seatNumber = request.body.seatNum;
-      var customerId = request.session.user?.username;
+    //   var total = request.body.totalPrice;
+    //   var date = request.body.date;
+    //   var seatNumber = request.body.seatNum;
+    //   var customerId = request.session.user?.username;
+    //   var movieId = request.body.movieId;
+    //   var saloonId = reques.body.saloonId;
 
-      if (total > 0) {
-        console.log(customerId);
-        email = store.get('username');
-        db.prepare("INSERT INTO tickets (date, seatNum, totalPrice, customerId) VALUES (" + "'" + date + "'" + ", '" + seatNumber + "', " + total + ", '" + customerId + "')").run();
-        response.send("1");
+    //   if (total > 0) {
+    //     console.log(customerId);
+    //     // email = store.get('username');
+    //     db.prepare("INSERT INTO tickets (date, seatNum, totalPrice, customerId) VALUES (" + "'" + date + "'" + ", '" + seatNumber + "', " + total + ", '" + customerId + "')").run();
+    //     response.send("1");
 
 
-        var transport = nodemailer.createTransport(smtpTransport({
-          host: process.env.HOST,
-          port: 465,
-          auth: {
-            user: process.env.USER,
-            pass: process.env.PASS
-          }
-        }));
+    //     var transport = nodemailer.createTransport(smtpTransport({
+    //       host: process.env.HOST,
+    //       port: 465,
+    //       auth: {
+    //         user: process.env.USER,
+    //         pass: process.env.PASS
+    //       }
+    //     }));
 
-        var mailOptions = {
-          from: process.env.USER,
-          to: customerId,
-          subject: 'Ticket Confirmation',
-          text: 'This email is sent to you as a confirmation that you have bought ticket for cinema'
-            + '\r\n' + ' Date on : ' + date + '\r\n' +
-            ' Username: ' + customerId + '\r\n' +
-            ' Your seat number: ' + seatNumber + '\r\n' +
-            ' Total Price: ' + total + '\r\n' +
-            ' Thank you! '
-        };
+    //     var mailOptions = {
+    //       from: process.env.USER,
+    //       to: customerId,
+    //       subject: 'Ticket Confirmation',
+    //       text: 'This email is sent to you as a confirmation that you have bought ticket for cinema'
+    //         + '\r\n' + ' Date on : ' + date + '\r\n' +
+    //         ' Username: ' + customerId + '\r\n' +
+    //         ' Your seat number: ' + seatNumber + '\r\n' +
+    //         ' Total Price: ' + total + '\r\n' +
+    //         ' Thank you! '
+    //     };
 
-        transport.sendMail(mailOptions, function (error, info) {
-          if (error) {
-            // console.log(error);
-          } else {
-            console.log('Email sent: ' + info.response);
-          }
-        });
+    //     transport.sendMail(mailOptions, function (error, info) {
+    //       if (error) {
+    //         // console.log(error);
+    //       } else {
+    //         console.log('Email sent: ' + info.response);
+    //       }
+    //     });
 
-      }
-      else if (result.length == 0) {
+    //   }
+    //   else if (result.length == 0) {
 
-        response.send('0')
-      }
-      else if (err) {
-        response.send(err);
-      }
-    });
+    //     response.send('0')
+    //   }
+    //   else if (err) {
+    //     response.send(err);
+    //   }
+    // });
 
 
 
@@ -347,23 +350,23 @@ module.exports = function specialrouts(app, db) {
       }
     });
 
-    // app.post('/api/tickets', function (request, response) {
+    app.post('/api/tickets', function (request, response) {
 
-    //   var total = request.body.totalPrice;
-    //   var date = request.body.date;
-    //   var seatNumber = request.body.seatNum;
-    //   var customerId = request.body.customerId;
-    //   var movieId = request.body.movieId;
-    //   var saloonId = request.body.saloonId;
+      var total = request.body.totalPrice;
+      var date = request.body.date;
+      var seatNumber = request.body.seatNum;
+      var customerId = request.session.user?.username;
+      var movieId = request.body.movieId;
+      var saloonId = request.body.saloonId;
 
-    //   if (total > 0) {
+      if (total > 0) {
 
-    //     db.prepare("INSERT INTO tickets (date, seatNum, totalPrice, customerId, movieId, saloonId) VALUES (" + "'" + date + "'" + ", '" + seatNumber + "', " + total + ", '" + customerId + "', " + movieId + ", " + saloonId + ")").run();
-    //     response.send("1");
-    //   } else {
-    //     response.send("0");
-    //   }
-    // });
+        db.prepare("INSERT INTO tickets (date, seatNum, totalPrice, customerId, movieId, saloonId) VALUES (" + "'" + date + "'" + ", '" + seatNumber + "', " + total + ", '" + customerId + "', " + movieId + ", " + saloonId + ")").run();
+        response.send("1");
+      } else {
+        response.send("0");
+      }
+    });
 
     app.post('/api/takenSeats', jsonParser, function (request, response) {
 
@@ -397,18 +400,6 @@ module.exports = function specialrouts(app, db) {
       }
     });
 
-    /* app.post('/customers' , function (request, response) {
-        var firstName = request.body.firstName;
-        var lastName = request.body.lastName;
-        var username = request.body.username;
-        // encrypt the field whose name is stored in passwordField
-        var password =   passwordEncryptor(request.body[passwordField]);
-        var userRole =request.body[userRoleField] = 'user';
-        sqlQuerie.prepare("INSERT INTO customers( firstName,lastName,username,password,userRole) VALUES (" + "'" + firstName + "'" + ", '" + lastName + "'" + ", '" + username + "'" + ", '" + password+ "'" + ", '" +userRole + "') ").run();
-        response.send("DONE");
-      }); */
-  }
-
 
   app.post('/api/takenSeats', jsonParser, function (request, response) {
 
@@ -423,15 +414,5 @@ module.exports = function specialrouts(app, db) {
       response.send('0')
     }
   });
-
-  //  app.post('/customers' , function (request, response) {
-  //     var firstName = request.body.firstName;
-  //     var lastName = request.body.lastName;
-  //     var username = request.body.username;
-  //     // encrypt the field whose name is stored in passwordField
-  //     var password =   passwordEncryptor(request.body[passwordField]);
-  //     var userRole =request.body[userRoleField] = 'user';
-  //     sqlQuerie.prepare("INSERT INTO customers( firstName,lastName,username,password,userRole) VALUES (" + "'" + firstName + "'" + ", '" + lastName + "'" + ", '" + username + "'" + ", '" + password+ "'" + ", '" +userRole + "') ").run();
-  //     response.send("DONE");
-  //   });
 }
+

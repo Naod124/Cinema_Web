@@ -1,5 +1,5 @@
 
- function tickets() {
+function tickets() {
   const price = document.getElementById("price"),
     seatContainer = document.querySelector(".seat-container"),
     seats = document.querySelectorAll(".row .seat:not(.taken)"),
@@ -70,7 +70,7 @@
     setTicketData(e.target.selectedIndex, e.target.value, undefined);
     updateSelectedSeat();
   });
-  
+
   function setTicketData(ticketTypeIndex, ticketCost, reserved) {
     localStorage.setItem("selectedTicketTypeIndex", ticketTypeIndex);
     localStorage.setItem("selectedTicketPrice", ticketCost);
@@ -115,7 +115,7 @@
 
     let jsonData = JSON.stringify({
       'date': date, 'seatNum': seatNum, 'totalPrice': total,
-      'customerId': customerId, 'movieId': movieId, 'saloonId': saloonId
+      'movieId': movieId, 'saloonId': saloonId
     });
 
     $.ajax({
@@ -143,7 +143,7 @@
         }
       }
     });
-    }
+  }
 
   function retrieveTakenSeats(date) {
     const url = "http://localhost:7777/api/takenSeats";
