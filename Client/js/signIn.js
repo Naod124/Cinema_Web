@@ -12,6 +12,7 @@ function submitClick() {
   const url = "http://localhost:7777/api/login";
   var representationOfDesiredState = "The cheese is old and moldy, where is the bathroom?";
   
+  console.log(username)
   var client = new XMLHttpRequest();
   
   client.open("POST", url, false);
@@ -162,6 +163,7 @@ function fourthForm() {
     dataType: "json",
     jsonp: false,
     success: function (data, textStatus, jqXHR) {
+      
 
       if (data == 0) {
         alert("Invalid reset code")

@@ -81,7 +81,7 @@ function verifyToken (req,res,next) {
    }
 
  }*/
-
+ 
 app.post('/forgetPass', jsonParser, function (request, response) {
   var username = request.body.email;
   // console.log(username);  
@@ -95,6 +95,7 @@ app.post('/forgetPass', jsonParser, function (request, response) {
   if (stmt.length == 1) {
     response.send('1');
 
+   
     var transporter = nodemailer.createTransport(smtpTransport({
       host: process.env.HOST,
       port: 465, 
@@ -103,7 +104,6 @@ app.post('/forgetPass', jsonParser, function (request, response) {
         pass: process.env.PASS
       }
     }));
-
     var mailOptions = {
       from: process.env.USER,
       to: username,
@@ -168,9 +168,42 @@ app.post('/api/tickets', function (request, response) {
   var customerId = request.body.customerId;
 
   if (total > 0) {
-      
+    email = store.get('username');
     db.prepare("INSERT INTO tickets (date, seatNum, totalPrice, customerId) VALUES (" + "'" + date + "'" + ", '" + seatNumber + "', " + total + ", '" + customerId +"')").run();
-  response.send("1");
+    response.send("1");
+
+  
+      var transport = nodemailer.createTransport(smtpTransport({
+        host: process.env.HOST,
+        port: 465, 
+        auth: {
+          user: process.env.USER,
+          pass: process.env.PASS
+        }
+      }));
+  
+      var mailOptions = {
+        from: process.env.USER,
+        to: customerId,
+        subject: 'Ticket Confirmation',
+        text: 'This email is sent to you as a confirmation that you have bought ticket for cinema'
+        + '\r\n' + ' Date on : ' + date + '\r\n' +
+        ' Username: ' + customerId + '\r\n' +
+        ' Your seat number: ' + seatNumber + '\r\n' +
+       ' Total Price: ' + total + '\r\n' +
+        ' Thank you! '  
+      };
+  
+      transport.sendMail(mailOptions, function (error, info) {
+        if (error) {
+         // console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+  
+    
+
 } else {
     response.send("0");
   }
