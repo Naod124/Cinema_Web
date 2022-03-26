@@ -22,117 +22,83 @@
   <main id="main">
     <div class="movie-container" style="overflow: auto;">
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-          data-bs-toggle="dropdown" aria-expanded="false">
-          Filter
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li>
-            <a class="dropdown-item" href="#" id="ageFilter">
-              Age ascending
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#" id="releaseDateFilter">
-              Date of release
-            </a>
-          </li>
-        </ul>
+        <label style="color: black;">Filter by: </label>
+        <button id="btnAge" type="button" onclick="age()" >age </button>
+      <button id="btnDate" type="button" onclick="date()" >date </button>
+
+      <p style="color: black;" id="sortbyTxt"> Sorted by default</p>
       </div>
+     
+
       <ul class="film-list">
-        <li class="item">
+        <li id="room" class="item">
           <div class="container">
             <div class="row movieImage">
               <div class="col-2">
-                <img src="theRoomTitle.jpg" width="100%" height="auto">
+                <img src="theRoomTitle.jpg" width="100%" height="100%">
               </div>
-              <div class="col-10">
-                <p>Title: placement text until I get the title from db</p>
-                <p>Description: placement text until I get the description from db</p>
-                <p>Rating: placement text until I get the description from db</p>
-                <p>Release date: placement text until I get the release date from db</p>
-                <p>Age restriction: placement text until I get the age restriction from db</p>
+              <div  class="col-10">
+                <p style="color: black;"> 
+                  Title : The Room <br><br> Description: Johnny is a successful bank executive who<br> 
+                  lives quietly in a San Francisco townhouse with his fiancée, Lisa.<br> One day,
+                   putting aside any scruple, she seduces Johnny"s best friend, Mark. <br>From there,
+                    nothing will be the same again. <br><br> Rating: 3.6 <br><br> Release date: 2003 <br><br> Age: 15	</p>         
               </div>
             </div>
           </div>
         </li>
-        <li class="item">
+        <li id="inter" class="item">
           <div class="container">
             <div class="row movieImage">
               <div class="col-2">
-                <img src="interstellarTitle.jpg" width="100%" height="auto">
+                <img src="interstellarTitle.jpg" width="100%" height="100%">
               </div>
               <div class="col-10">
-                <p>Title: placement text until I get the title from db</p>
-                <p>Description: placement text until I get the description from db</p>
-                <p>Rating: placement text until I get the description from db</p>
-                <p>Release date: placement text until I get the release date from db</p>
-                <p>Age restriction: placement text until I get the age restriction from db</p>
+                <p style="color: black;"> Title: Interstellar  <br><br> Description: A team of explorers travel through a <br> wormhole
+                   in space in an attempt to ensure humanity"s survival. <br><br>	Rating: 8.7 <br><br> Release date: 2014 <br><br> Age: 12</p>
               </div>
             </div>
           </div>
         </li>
-        <li class="item">
+        <li id="revenant" class="item">
           <div class="container">
             <div class="row movieImage">
               <div class="col-2">
-                <img src="theRevenantTitle.jpg" width="100%" height="auto">
+                <img src="theRevenantTitle.jpg" width="100%" height="100%">
               </div>
               <div class="col-10">
-                <p>Title: placement text until I get the title from db</p>
-                <p>Description: placement text until I get the description from db</p>
-                <p>Rating: placement text until I get the description from db</p>
-                <p>Release date: placement text until I get the release date from db</p>
-                <p>Age restriction: placement text until I get the age restriction from db</p>
+                <p style="color: black;"> Title: The Revenant <br><br> Description: A frontiersman on a fur trading expedition in the 1820s fights for <br>
+                   survival after being mauled by a bear and left for dead by members of his own hunting team. <br><br> Rating : 8 <br><br> Relaese date: 2015 <br><br> Age: 15	 </p>
               </div>
             </div>
           </div>
         </li>
-        <li class="item">
+        
+        <li id="hata" class="item">
           <div class="container">
             <div class="row movieImage">
               <div class="col-2">
-                <img src="attackOfTheKillerTomatoesTitle.jpg" width="100%" height="auto">
+                <img src="hataGöteborgTitle.jpg" width="100%" height="100%">
               </div>
               <div class="col-10">
-                <p>Title: placement text until I get the title from db</p>
-                <p>Description: placement text until I get the description from db</p>
-                <p>Rating: placement text until I get the description from db</p>
-                <p>Release date: placement text until I get the release date from db</p>
-                <p>Age restriction: placement text until I get the age restriction from db</p>
+                <p style="color: black;">Title:Hata Göteborg	<br><br> Description: The gloomy, hate-filled lives of a group of teenage guys in the south 
+                  of Sweden suddenly turn  around when one of the guys" hippie-like cousin shows up.	<br> <br>  Rating: 5.4	<br><br>Release date: 2007 <br><br> Age: 11  </p>
+                
               </div>
             </div>
           </div>
         </li>
-        <li class="item">
+        <li id="1917" class="item">
           <div class="container">
             <div class="row movieImage">
               <div class="col-2">
-                <img src="hataGöteborgTitle.jpg" width="100%" height="auto">
+                <img src="1917Title.jpg" width="100%" height="100%">
               </div>
               <div class="col-10">
-                <p>Title: placement text until I get the title from db</p>
-                <p>Description: placement text until I get the description from db</p>
-                <p>Rating: placement text until I get the description from db</p>
-                <p>Release date: placement text until I get the release date from db</p>
-                <p>Age restriction: placement text until I get the age restriction from db</p>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="item">
-          <div class="container">
-            <div class="row movieImage">
-              <div class="col-2">
-                <img src="1917Title.jpg" width="100%" height="auto">
-              </div>
-              <div class="col-10">
-                <p>Title: placement text until I get the title from db</p>
-                <p>Description: placement text until I get the description from db</p>
-                <p>Rating: placement text until I get the description from db</p>
-                <p>Release date: placement text until I get the release date from db</p>
-                <p>Age restriction: placement text until I get the age restriction from db</p>
-              </div>
+                <p style="color: black;"> Title: 1917 <br><br> Description: April 6th, 1917. As an infantry battalion assembles to wage war deep in enemy 
+                  <br> territory, two soldiers are assigned to race against time and deliver 
+                  a message that will stop 1,600 men from walking straight into a deadly trap. <br><br> Rating: 8.3 <br><br> Release date: 2019	<br><br> Age: 15</p>
+           
             </div>
           </div>
         </li>
