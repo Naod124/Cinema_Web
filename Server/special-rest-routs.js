@@ -273,9 +273,9 @@ module.exports = function specialrouts(app, db) {
       var customerId = request.session.user?.username;
       var movieId = request.body.movieId;
       var saloonId = request.body.saloonId;
+      var cinemaId = request.body.cinemaId;
 
-      if (total > 0) {
-
+      if (customerId != undefined) {
         db.prepare("INSERT INTO tickets (date, seatNum, totalPrice, customerId, movieId, saloonId, cinemaId) VALUES (" + "'" + date + "'" + ", '" + seatNumber + "', " + total + ", '" + customerId + "', " + movieId + ", " + saloonId + ", " + cinemaId +")").run();
         response.send("1");
       } else {
@@ -288,8 +288,9 @@ module.exports = function specialrouts(app, db) {
       var date = request.body.date;
       var movieId = request.body.movieId;
       var saloonId = request.body.saloonId;
+      var cinemaId = request.body.cinemaId
 
-      let stmt = db.prepare("SELECT * FROM tickets WHERE date like  '%" + date + "%' AND movieId like '%" + movieId + "%' AND saloonId like '%" + saloonId + "%'").all();
+      let stmt = db.prepare("SELECT * FROM tickets WHERE date like  '%" + date + "%' AND movieId = " + movieId + " AND saloonId = " + saloonId + " AND cinemaId =" + cinemaId).all();
 
       if (stmt.length > 0) {
         response.send(stmt);
@@ -305,7 +306,7 @@ module.exports = function specialrouts(app, db) {
       var movieId = request.body.movieId;
       var theatreId = request.body.theatreId;
 
-      let stmt = db.prepare("SELECT * FROM screening WHERE date like  '%" + date + "%' AND movieId like '%" + movieId + "%' AND cinemaId like '%" + theatreId + "%'").all();
+      let stmt = db.prepare("SELECT * FROM screening WHERE date like  '%" + date + "%' AND movieId = " + movieId + " AND cinemaId = " + theatreId).all();
 
       if (stmt.length > 0) {
         response.send(stmt);

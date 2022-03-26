@@ -1,9 +1,9 @@
 function home() {
-  const buttonTrailer = document.querySelector("button");
-  const buttonTrailerPlay = document.querySelector("i");
+  const buttonTrailer = document.getElementById("trailer");
+  const buttonTrailerPlay = document.getElementById("icon");
 
   //home page watch trailer button animation
-  buttonTrailer.addEventListener('mouseover', () => { 
+  buttonTrailer.addEventListener('mouseover', () => {
     buttonTrailer.classList.add('button-darken');
     buttonTrailerPlay.classList.add('button-darken');
   })
@@ -14,8 +14,6 @@ function home() {
   })
 
 
-
-console.log(myCarousel);
   $(document.getElementsByClassName("home-h1")).html('INTERSTELLAR');
   $(document.getElementsByClassName("home-h2")).html('ADVENTURE | SCI-FI');
 
