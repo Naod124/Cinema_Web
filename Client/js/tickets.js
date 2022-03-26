@@ -1,4 +1,5 @@
-function tickets() {
+
+ function tickets() {
   const price = document.getElementById("price"),
     seatContainer = document.querySelector(".seat-container"),
     seats = document.querySelectorAll(".row .seat:not(.taken)"),
@@ -61,7 +62,7 @@ function tickets() {
     setTicketData(e.target.selectedIndex, e.target.value, undefined);
     updateSelectedSeat();
   });
-
+  
   function setTicketData(ticketTypeIndex, ticketCost, reserved) {
     localStorage.setItem("selectedTicketTypeIndex", ticketTypeIndex);
     localStorage.setItem("selectedTicketPrice", ticketCost);
@@ -104,15 +105,15 @@ function tickets() {
     let date = dateControl.value.toString().slice(0, 5) + dateControl.value.toString().slice(6);
     let seatNum = seatsIndex.join("-");
    // let customerId = "wael-natafji@hotmail.com";
-   let customerId = localStorage.getItem("email"); 
+   
+  //  let customerId = localStorage.getItem("email"); 
 
-   console.log(customerId);
     let jsonData = JSON.stringify({
-      'date': date, 'seatNum': seatNum, 'totalPrice': total, 'customerId': customerId
+      'date': date, 'seatNum': seatNum, 'totalPrice': total
     });
-
+console.log("are you buying?");
+console.log(jsonData);
     $.ajax({
-
       type: 'POST',
       contentType: "application/json; charset=utf-8",
       url: url,

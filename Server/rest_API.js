@@ -5,6 +5,7 @@ const passwordEncryptor = require('./passwordEncryptor');
 const acl = require('./acl');
 const { STATUS_CODES } = require('http');
 
+
 // Which table stores user data and name of password column
 const userTable = 'customers';
 const passwordField = 'password';
@@ -19,7 +20,7 @@ function runQuery(tableName, req, res, parameters, sqlForPreparedStatement, only
 
   //  return "not allowed" if the user is not allowed to fetch data from this table
   if (!acl(tableName, req)) {
-    res.status(404);
+    res.status(405);
     res.json({ _error: 'Not allowed!' });
     return;
   }
@@ -137,8 +138,22 @@ module.exports = function setupRESTapi(app, databaseConnection) {
         WHERE id = :id
       `);
     });
+    app.get('/api/my-tickets', (req, res) => {
+      console.log("WHAAT?");
+      // check for a logged in user
+      // optional chainging ?. -> only if there is a user try to read user.id
+      let userId = req.session.user?.username;
+      console.log(userId);
+      // Run a query (and return the result) that will show the user
+      // his/her orders - but not any one elses orders
+      runQuery('my-tickets', req, res, { customerId: userId }, `
+        SELECT * FROM tickets WHERE customerId = :customerId
+      `);
+    
+    });
 
   }
+ 
   // Add a 404 route to the api
   // (will only match the request if no other routes matches it,
   //  since this routes is declared last)

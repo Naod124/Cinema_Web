@@ -7,7 +7,7 @@
       "get": true
     },
     "tickets": {
-      "get": true
+      "get": false
     },
     "login": {
       "post": true,
@@ -26,10 +26,16 @@
       "get": true
     },
     "tickets": {
-      "get": true
+      "get": true,
+      "post" :true,
+      "delete":true
     },
     "login": {
       "post": true,
+      "get": true,
+      "delete":true
+    },
+    "my-tickets":{
       "get": true
     }
   },

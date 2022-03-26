@@ -2,9 +2,8 @@ function home() {
   const buttonTrailer = document.querySelector("button");
   const buttonTrailerPlay = document.querySelector("i");
 
-
   //home page watch trailer button animation
-  buttonTrailer.addEventListener('mouseover', () => {
+  buttonTrailer.addEventListener('mouseover', () => { 
     buttonTrailer.classList.add('button-darken');
     buttonTrailerPlay.classList.add('button-darken');
   })
@@ -15,12 +14,8 @@ function home() {
   })
 
 
-  var myCarousel = document.getElementsByClassName('movie-carousel')
-  var carousel = new bootstrap.Carousel(myCarousel, {
-    interval: 4000,
-    wrap: true
-  })
 
+console.log(myCarousel);
   $(document.getElementsByClassName("home-h1")).html('INTERSTELLAR');
   $(document.getElementsByClassName("home-h2")).html('ADVENTURE | SCI-FI');
 
@@ -39,5 +34,5 @@ function home() {
       $(document.getElementsByClassName("home-h1")).html('THE REVENANT');
       $(document.getElementsByClassName("home-h2")).html('WESTERN | DRAMA');
     }
-  })
+  });
 }
