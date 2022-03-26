@@ -7,10 +7,14 @@ function tickets() {
     totalPrice = document.getElementById("total-price"),
     shoppingCart = document.getElementById("shopping-cart"),
     closeBtn = document.querySelector(".close-btn"),
-    buyBtn = document.querySelector(".buy-btn");
+    buyBtn = document.querySelector(".buy-btn"),
+    theatre = document.getElementById("theatre");
 
   let ticketPrice = +price.value;
   let selectedSeats = [];
+  let saloonId = 3;
+  let movieId = 3;
+  let check = false;
 
   function updateSelectedSeat() {
     selectedSeats = document.querySelectorAll(".row .seat.selected");
@@ -50,7 +54,11 @@ function tickets() {
   buyBtn.addEventListener("click", () => {
     shoppingCart.classList.remove("show");
     if (totalPrice.innerText > 0) {
-      saveTicketToDb();
+      if (check != false) {
+        saveTicketToDb();
+      } else {
+        alert("Screening not available for this movie!");
+      }
     } else {
       alert("No seats selected!");
     }
@@ -103,12 +111,13 @@ function tickets() {
     let total = totalPrice.innerText;
     let date = dateControl.value.toString().slice(0, 5) + dateControl.value.toString().slice(6);
     let seatNum = seatsIndex.join("-");
-   // let customerId = "wael-natafji@hotmail.com";
-   let customerId = localStorage.getItem("email"); 
+    // let customerId = localStorage.getItem("email");
+    let customerId = "Naoderi36@gmail.com";
+    // let movieId = 3;
 
-   console.log(customerId);
     let jsonData = JSON.stringify({
-      'date': date, 'seatNum': seatNum, 'totalPrice': total, 'customerId': customerId
+      'date': date, 'seatNum': seatNum, 'totalPrice': total,
+      'customerId': customerId, 'movieId': movieId, 'saloonId': saloonId
     });
 
     $.ajax({
@@ -143,7 +152,7 @@ function tickets() {
     const url = "http://localhost:7777/api/takenSeats";
 
     let jsonData = JSON.stringify({
-      'date': date
+      'date': date, 'movieId': movieId, 'saloonId': saloonId
     });
 
     $.ajax({
@@ -157,11 +166,47 @@ function tickets() {
       jsonp: false,
       success: function (data, textStatus, jqXHR) {
         if (data == 0) {
-          alert("No reservations found for this date")
+          // alert("No reservations found for this date")
           updateTakenSeats(data);
         }
         else if (data.length > 0) {
           updateTakenSeats(data);
+        }
+      }
+    });
+  }
+
+  function checkScreening() {
+    const url = "http://localhost:7777/api/checkScreening";
+
+    let movieId = 3;
+    let theatreId = theatre.value;
+    let date = dateControl.value.toString().slice(0, 5) + dateControl.value.toString().slice(6);
+
+    let jsonData = JSON.stringify({
+      'date': date, 'theatreId': theatreId, 'movieId': movieId
+    });
+
+    $.ajax({
+
+      type: 'POST',
+      contentType: "application/json; charset=utf-8",
+      url: url,
+      data: jsonData,
+      cache: false,
+      dataType: "json",
+      jsonp: false,
+      success: function (data, textStatus, jqXHR) {
+        if (data == 0) {
+          alert("Screening NOT found for this date and theatre!");
+          check = false;
+        }
+        else if (data.length > 0) {
+          check = true;
+          console.log(data[0].time);
+          alert("Screening found for this date and theatre! Time:" + data[0].time);
+          saloonId = data[0].saloonId;
+          console.log(saloonId);
         }
       }
     });
@@ -174,6 +219,8 @@ function tickets() {
       seat.classList.remove("taken");
       // seat.classList.remove("selected");
     });
+
+    // console.log(data);
 
     if (data != 0) {
       data.forEach((element, index) => {
@@ -209,9 +256,22 @@ function tickets() {
   dateControl.value = today.getFullYear() + '-0' + (today.getMonth() + 1) + '-' + today.getDate();;
 
   dateControl.addEventListener("change", () => {
-    retrieveTakenSeats(dateControl.value.toString().slice(0, 5) + dateControl.value.toString().slice(6));
+    checkScreening();
+    if (check != false) {
+      retrieveTakenSeats(dateControl.value.toString().slice(0, 5) + dateControl.value.toString().slice(6));
+    }
   })
 
+  theatre.addEventListener("change", () => {
+    // console.log(theatre.value);
+    checkScreening();
+
+    if (check != false) {
+      retrieveTakenSeats(dateControl.value.toString().slice(0, 5) + dateControl.value.toString().slice(6));
+    }
+  })
+
+  checkScreening();
   populateUIFromLocalStorage();
   updateSelectedSeat();
   retrieveTakenSeats(date);
