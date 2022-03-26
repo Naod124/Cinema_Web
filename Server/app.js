@@ -13,13 +13,6 @@ const port = process.env.PORT || 7777;;
 
 
 const app = express();
-app.use(session({
-  secret: 'someUnusualStringThatIsUniqueForThisProject',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: 'auto' },
-  store: betterstore({ dbPath: './DB/Filmvisarna.sqlite3' })
-}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -38,14 +31,23 @@ app.use(express.static(path.resolve(__dirname,"../","Client")));
 app.use(express.json({ limit: '100MB' }));
 app.listen(port, () =>console.log('Listening on http://localhost:' + port));
 //Redirect all requests to index.html
+// Import the login.js function and call it
+
+const login = require('./login.js');
+login(app, sqlQuerie);
 
 const specialRESTAPI = require('../Server/special-rest-routs');
 specialRESTAPI(app, sqlQuerie);
+
 const setupRESTapi = require('../Server/rest_API');
 setupRESTapi(app, sqlQuerie);
-module.exports = app;
 
  app.all("/*",(req,res)=>{
   res.set('Content-Type', 'text/html');
   res.sendFile(path.resolve(__dirname,"../Client","index.html"));
 }); 
+
+
+
+module.exports = app;
+

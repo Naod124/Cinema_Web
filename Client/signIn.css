@@ -1,101 +1,9 @@
 @import "css/normalize.css";
 @import url("https://fonts.googleapis.com/css?family=Raleway");
 
-:root {
-  --color-primary: #ffd634;
-  --color-headings: #fff;
-  --color-body: linear-gradient(#ababab, #fff);
-  --color-neutral: #565960;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-* {
-  font-family: "Raleway", sans-serif;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background: #ababab;
-}
-
-.navbar {
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--color-headings);
-  z-index: 100;
-}
-
-.company-name {
-  font-size: 1.5rem;
-  margin: 0.5rem;
-}
-
-span {
-  color: var(--color-primary);
-}
-
-.navbar-links {
-  height: 100%;
-}
-
-.navbar-links ul {
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-links li {
-  list-style: none;
-}
-
-.navbar-links li a {
-  display: block;
-  text-decoration: none;
-  color: var(--color-headings);
-  padding: 2.5rem;
-  opacity: 0.65;
-}
 
 #login {
   margin-left: 20rem;
-}
-
-/* .navbar-links li:hover {
-  background-color: rgb(192, 184, 184);
-} */
-
-.navbar-links .active {
-  color: var(--color-primary);
-  font-weight: bolder;
-  opacity: 1;
-}
-
-.navbar-links li a:hover {
-  opacity: 1;
-}
-
-.toggle-button {
-  position: absolute;
-  top: 0.75rem;
-  right: 1rem;
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 21px;
-}
-
-.toggle-button .bar {
-  height: 3px;
-  width: 100%;
-  background-color: var(--color-headings);
-  border-radius: 10px;
 }
 
 .wrapper {
@@ -109,15 +17,7 @@ span {
   text-align: center;
   box-shadow: 25px 25px 25px 25px rgba(0, 0, 0, 0.2);
 }
-h1 {
-  color: #ffd634;
-}
-h2 {
-  color: #ffd634;
-}
-h3 {
-  color: #ffd634;
-}
+
 a {
   color: white;
 }

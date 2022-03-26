@@ -1,3 +1,4 @@
+
 document.querySelector('body').addEventListener('click', function (event) {
   // event = an object with info about the event
   // event.target = the innermost HTML-element I clicked
@@ -57,12 +58,16 @@ async function router() {
   document.querySelector('main').innerHTML = content;
 
   $(document).ready(function () {
-    $("button").ready(function () {
-      if ($("button").length) {
+    $(document.getElementsByClassName("trailer-button")).ready(function () {
+      if ($(document.getElementsByClassName("trailer-button")).length) {
         home();
       }
     });
-
+    $(document.getElementsByClassName("tickets")).ready(function () {
+      if ($(document.getElementsByClassName("tickets")).length) {
+        showHistory();
+      }
+    });
     $(document.getElementsByClassName("seat-container")).ready(function () {
       if ($(document.getElementsByClassName("seat-container")).length) {
         tickets();
@@ -84,3 +89,4 @@ const navbarLinks = document.getElementsByClassName("navbar-links")[0];
 toggleButton.addEventListener("click", () => {
   navbarLinks.classList.toggle("active");
 });
+

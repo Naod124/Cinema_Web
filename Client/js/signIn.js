@@ -1,8 +1,6 @@
-
 //alert('hello world'); 
 //closeForm();
-
-function submitClick() {
+/* function submitClick() { 
  // alert('hello')
  let username = $('#username').val();
  let password = $('#password').val();
@@ -12,6 +10,7 @@ function submitClick() {
   const url = "http://localhost:7777/api/login";
   var representationOfDesiredState = "The cheese is old and moldy, where is the bathroom?";
   
+  console.log(username)
   var client = new XMLHttpRequest();
   
   client.open("POST", url, false);
@@ -32,8 +31,6 @@ function submitClick() {
           $('#login').text("Hi "+localStorage.getItem("firstName"));
           history.pushState({}, '', 'http://localhost:7777'); 
           $("#login").attr("disabled", true);
-
-
             }
             //window.location.href("../Client/index.html"); 
             //history.pushState({}, null,path.resolve(__dirname,"../Client","index.html"));
@@ -45,8 +42,72 @@ function submitClick() {
   }
 
 }
+ */
+// Add a delegated event listener for submitting the form
+document.querySelector('body').addEventListener('submit', async (event) => {
+  console.log("ARE WE HERE ?");
+  // the target is the actual thing clicked/submitted
+  let target = event.target;
 
+  // uses closest to th see if the target or any of its parents
+  // matches the form we want to work with (otherwise do nohting)
+  if (!target.closest('form[name="login"]')) { return; }
 
+  event.preventDefault();
+
+  // For comments on this logic see register.js
+  let formElements = document.forms.login.elements;
+  let requestBody = {};
+  for (let element of formElements) {
+    if (element.type === 'submit') { continue; }
+    requestBody[element.name] = element.value;
+  }
+  console.log("ARE WE HERE 2?");
+
+  // Try to login
+  let result;
+  try {
+    result = await (await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestBody)
+    })).json();
+  }
+  catch (ignore) { }
+console.log(JSON.stringify(requestBody));
+  // React on incorrect login or any other error
+  if (!result || result._error) {
+    console.log(JSON.stringify(result));
+    return;
+  }
+
+  // Succesfully logged in, reload the page
+  location.reload();
+
+});
+document.querySelector('body').addEventListener('click', (event) => {
+
+  // Do nothing if the link wasn't clicked
+  if (!event.target.closest('a[href="/login"]')) { return; }
+
+  // Prevent following the link (reloading the page)
+  event.preventDefault();
+
+  // Render the login form and show it
+  let loginDiv = document.querySelector('.login');
+  loginDiv.innerHTML = renderLoginForm();
+  loginDiv.classList.remove('hidden');
+  document.querySelector('.modal-hider').classList.remove('hidden');
+});
+
+document.querySelector('body').addEventListener('click', (event) => {
+  if (!event.target.closest('.modal-hider')) { return; }
+  let elementsToHide = document.querySelectorAll('.register, .login, .modal-hider');
+  for (element of elementsToHide) {
+    element.classList.add('hidden');
+  }
+
+});
 
 function openForm() {
   $("#myForm").show();
@@ -162,6 +223,7 @@ function fourthForm() {
     dataType: "json",
     jsonp: false,
     success: function (data, textStatus, jqXHR) {
+      
 
       if (data == 0) {
         alert("Invalid reset code")
