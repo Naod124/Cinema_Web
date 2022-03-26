@@ -38,4 +38,23 @@ function displayMovies(movies) {
     main.append(div);
   });
 }*/
+/*
+*/
+function age() {
+  $("#hata").insertBefore("#room");
+  $("#inter").insertBefore("#room");
+  
+  $("#sortbyTxt").text("Sorted by age limit starting by the youngest");
+}
 
+
+
+
+function date(){
+
+$("#hata").insertAfter("#room");
+$("#inter").insertAfter("#room");
+$("#hata").insertBefore("#inter");
+$("#sortbyTxt").text("Sorted by release date starting by the oldest");
+
+}
