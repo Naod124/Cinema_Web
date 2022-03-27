@@ -185,7 +185,6 @@ function tickets() {
   // check if the screening of the movie exists in the db
   function checkScreening() {
     const url = "http://localhost:7777/api/checkScreening";
-
     let theatreId = theatre.value;
     let date = dateControl.value.toString().slice(0, 5) + dateControl.value.toString().slice(6);
     let select1 = document.getElementById("selectMovie");
@@ -308,8 +307,16 @@ async function renderMovies(){
    var opt = index.id;
    var opt1 = index.title;
    var el = document.createElement("option");
-   el.textContent = opt1;
    el.value = opt;
+   el.text = opt1;
    select1.appendChild(el);
   }
+  select1.addEventListener('change',()=>{
+    let value1 = select1.options[select1.selectedIndex].text;
+    console.log(value1);
+    document.getElementById('ticketImage').src=value1+".jpg";
+
+  })
+ 
 }
+

@@ -1,3 +1,4 @@
+let link = 'https://www.youtube.com/watch?v=2LqzF5WauAw';
 function home() {
   const buttonTrailer = document.getElementById("trailer");
   const buttonTrailerPlay = document.getElementById("icon");
@@ -6,6 +7,9 @@ function home() {
   buttonTrailer.addEventListener('mouseover', () => {
     buttonTrailer.classList.add('button-darken');
     buttonTrailerPlay.classList.add('button-darken');
+  })
+  buttonTrailer.addEventListener('click', () => {
+    window.open(link, '_blank');
   })
 
   buttonTrailer.addEventListener('mouseout', () => {
@@ -21,16 +25,20 @@ function home() {
     if ($(event.from)[0] === undefined) {
       $(document.getElementsByClassName("home-h1")).html('INTERSTELLAR');
       $(document.getElementsByClassName("home-h2")).html('ADVENTURE | SCI-FI');
+      link = 'https://www.youtube.com/watch?v=2LqzF5WauAw';
+
     }
 
     if ($(event.from)[0] === 1) {
       $(document.getElementsByClassName("home-h1")).html('1917');
       $(document.getElementsByClassName("home-h2")).html('WAR | DRAMA');
+      link = 'https://www.youtube.com/watch?v=YqNYrYUiMfg';
     }
 
     if ($(event.from)[0] === 2) {
       $(document.getElementsByClassName("home-h1")).html('THE REVENANT');
       $(document.getElementsByClassName("home-h2")).html('WESTERN | DRAMA');
+      link = 'https://www.youtube.com/watch?v=LoebZZ8K5N0';
     }
   });
 }
@@ -45,37 +53,36 @@ async function renderHomeMovies(){
   }
   console.log(results);
   let html='';
-  html += '<div class="container-flex">';
+ 
+   
   for (const iterator of results) {
-     html += '<div class="row">';
-    html+='<div class="col-lg-6 col-sm-12 ">'
-     html += '<div class="justify-content-center">';
+    html+='<div class="col-lg-6 col-md-6 col-sm-12">'
      html += '<img src= "';
      html += iterator.images;
      html += '" width="100%" height="auto">';
-     html += '<p>Title: ';
+     html += '<h4 id="yellow">Title: </h4><p>';
      html += iterator.title;
      html+= '</p>'
-     html += '<p>Director: ';
+     html += '<h4 id="yellow">Director:</h4><p>';
      html += iterator.director;
      html+= '</p>'
-     html += '<p>Rating: ';
+     html += '<h4 id="yellow">Rating: </h4><p>';
      html += iterator.rating;
      html+= '</p>'
-     html += '<p>Description: ';
+     html += '<h4 id="yellow">Description: </h4><p>';
      html += iterator.desc;
      html+= '</p>'
-     html += '<p>Duration: ';
+     html += '<h4 id="yellow">Duration: </h4><p>';
      html += iterator.duration;
      html+= '</p>'
-     html+='<button type="button" class="btn customButton href="';
-     html+=iterator.trailer;
-     html+= '">Show trailer</button>'
-     html+='</div></div>'
+     html += '<h4 id="yellow">Trailer link: </h4><p>';
+     html+= '<a href="';
+     html+= iterator.trailer;
+     html+='">Trailer</a></p></div>';
   }
-  html+='</div>';
+ 
   document.querySelector('.movie-list').innerHTML=html;
-  
+
 }
 
 renderHomeMovies();
