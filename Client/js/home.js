@@ -34,3 +34,48 @@ function home() {
     }
   });
 }
+async function renderHomeMovies(){
+  let results = {}
+  try{
+    results = await (await fetch("/api/movies")).json();
+
+  }
+  catch(ignore){
+
+  }
+  console.log(results);
+  let html='';
+  html += '<div class="container-flex">';
+  for (const iterator of results) {
+     html += '<div class="row">';
+    html+='<div class="col-lg-6 col-sm-12 ">'
+     html += '<div class="justify-content-center">';
+     html += '<img src= "';
+     html += iterator.images;
+     html += '" width="100%" height="auto">';
+     html += '<p>Title: ';
+     html += iterator.title;
+     html+= '</p>'
+     html += '<p>Director: ';
+     html += iterator.director;
+     html+= '</p>'
+     html += '<p>Rating: ';
+     html += iterator.rating;
+     html+= '</p>'
+     html += '<p>Description: ';
+     html += iterator.desc;
+     html+= '</p>'
+     html += '<p>Duration: ';
+     html += iterator.duration;
+     html+= '</p>'
+     html+='<button type="button" class="btn customButton href="';
+     html+=iterator.trailer;
+     html+= '">Show trailer</button>'
+     html+='</div></div>'
+  }
+  html+='</div>';
+  document.querySelector('.movie-list').innerHTML=html;
+  
+}
+
+renderHomeMovies();

@@ -17,7 +17,7 @@ function tickets() {
   let saloonId = undefined;
   // movie id needs to be fetched from movies/home page
   // for now it is not changing
-  let movieId ;
+  let movieId=1 ;
   let check = false;
 
   function updateSelectedSeat() {
@@ -112,7 +112,6 @@ function tickets() {
     const seatsIndex = [...selectedSeats].map(function (seat) {
       return [...seats].indexOf(seat);
     });
-
     let total = totalPrice.innerText;
     let date = dateControl.value.toString().slice(0, 5) + dateControl.value.toString().slice(6);
     let seatNum = seatsIndex.join("-");
@@ -189,7 +188,10 @@ function tickets() {
 
     let theatreId = theatre.value;
     let date = dateControl.value.toString().slice(0, 5) + dateControl.value.toString().slice(6);
-
+    let select1 = document.getElementById("selectMovie");
+    let value1 = select1.options[select1.selectedIndex].value;
+    console.log(movieId)
+    movieId = value1;
     let jsonData = JSON.stringify({
       'date': date, 'theatreId': theatreId, 'movieId': movieId
     });

@@ -36,7 +36,9 @@
       "delete":true
     },
     "my-tickets":{
-      "get": true
+      "get": true,
+      "post":true,
+      "delete":true
     }
   },
   "superadmin": {
@@ -45,6 +47,12 @@
       "post": true,
       "put": true,
       "delete": true
+    },
+    "my-tickets":{
+      "get": true,
+      "post":true,
+      "delete":true,
+      "update":true
     },
     "cities": {
       "get": true,

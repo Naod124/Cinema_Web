@@ -27,7 +27,7 @@
         console.log(iterator.title);
         cardHtml+=iterator.title;
         cardHtml+='</h2></div>';
-        cardHtml+='<div class="col"><h3>City</h3>'
+        cardHtml+='<div class="col"><h3 id="yellow">City</h3>'
         cardHtml += '<h2 class="City">';
         console.log(iterator.cityName);
         cardHtml+=iterator.cityName;
@@ -37,7 +37,7 @@
         console.log(iterator.name);
         cardHtml+=iterator.name;
         cardHtml+='</h2></div>';
-        cardHtml+='<div class="col"><h3>Seat number</h3>'
+        cardHtml+='<div class="col"><h3 id="yellow">Seat number</h3>'
         cardHtml += '<h2 class="SeatNumber">';
         console.log(iterator.seatNum);
         cardHtml+=iterator.seatNum;
@@ -49,7 +49,7 @@
         let ticketDate = new Date(iterator.date);
         dates[counter]=ticketDate;
         cardHtml+='</h2></div>';   
-        cardHtml+='<div class="col"><h3>Total price</h3>';
+        cardHtml+='<div class="col"><h3 id="yellow">Total price</h3>';
         cardHtml += '<h2 class="totalPrice">';
         console.log(iterator.totalPrice);
         cardHtml+=iterator.totalPrice;

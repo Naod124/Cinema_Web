@@ -137,6 +137,7 @@ i {
 }
 
 .navbar {
+  background-color: rgb(116, 85, 85);
   display            : flex;
   position           : relative;
   margin-bottom      : 3rem;
@@ -168,6 +169,8 @@ span{
 
 .navbar-links li {
   list-style: none;
+  font-size: large;
+  font-weight: bold;
 }
 
 .navbar-links li a {
@@ -196,6 +199,9 @@ span{
   opacity    : 1;
 }
 
+p{
+  color: black;
+}
 .toggle-button {
   position       : absolute;
   top            : 0.75rem;
