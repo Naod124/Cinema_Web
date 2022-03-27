@@ -147,8 +147,29 @@ module.exports = function setupRESTapi(app, databaseConnection) {
       // Run a query (and return the result) that will show the user
       // his/her orders - but not any one elses orders
       runQuery('my-tickets', req, res, { customerId: userId }, `
-        SELECT * FROM tickets WHERE customerId = :customerId
+      SELECT tickets.id, tickets.seatNum, tickets.date ,tickets.totalPrice,tickets.saloonId,tickets.customerId,movies.title ,salons.name ,cinema.cityName
+      FROM tickets
+      INNER JOIN movies,salons,cinema ON tickets.movieId=movies.id AND tickets.saloonId=salons.id AND tickets.cinemaId=cinema.id WHERE customerId = :customerId;
       `);
+      
+    
+    }); 
+    app.delete('/api/my-tickets', (req, res) => {
+      console.log("Delete?");
+      // check for a logged in user
+      // optional chainging ?. -> only if there is a user try to read user.id
+      let userId = req.session.user?.username;
+      let id = req.body["id"];
+      console.log(id);
+      console.log(userId);
+      // Run a query (and return the result) that will show the user
+      // his/her orders - but not any one elses orders
+      runQuery('tickets', req, res, { customerId: userId ,id:id }, `
+      DELETE FROM tickets
+      WHERE customerId = :customerId AND 
+            id = :id;
+      `);
+      
     
     });
 

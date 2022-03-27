@@ -73,6 +73,11 @@ async function router() {
         tickets();
       }
     });
+    $(document.getElementsByClassName("moviesSelect")).ready(function () {
+      if ($(document.getElementsByClassName("moviesSelect")).length) {
+        renderMovies();
+      }
+    });
 
   });
 }

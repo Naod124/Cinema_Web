@@ -72,9 +72,6 @@ module.exports = function specialrouts(app, db) {
 
   // create application/x-www-form-urlencoded parser
   var urlencodedParser = bodyParser.urlencoded({ extended: false })
-  var username = "Naoderi36@gmail.com";
-  let firstName = db.prepare("SELECT firstName FROM customers WHERE username= '" + username + "'").get();
-  console.log(JSON.stringify(firstName.firstName));
   /* app.post('/api/login' ,jsonParser, function (request, response) {
     //console.log(db.getUser('Naoderi36@gmail.com', '12345'));
     response.type('application/json');

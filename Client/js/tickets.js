@@ -17,7 +17,7 @@ function tickets() {
   let saloonId = undefined;
   // movie id needs to be fetched from movies/home page
   // for now it is not changing
-  let movieId = 2;
+  let movieId ;
   let check = false;
 
   function updateSelectedSeat() {
@@ -104,6 +104,7 @@ function tickets() {
   }
 
 
+
   // save ticket to the db
   function saveTicketToDb() {
     const url = "http://localhost:7777/api/tickets";
@@ -116,8 +117,9 @@ function tickets() {
     let date = dateControl.value.toString().slice(0, 5) + dateControl.value.toString().slice(6);
     let seatNum = seatsIndex.join("-");
     let cinemaId = theatre.value;
-
-
+    let select1 = document.getElementById("selectMovie");
+    let value1 = select1.options[select1.selectedIndex].value;
+    movieId = value1;
     let jsonData = JSON.stringify({
       'date': date, 'seatNum': seatNum, 'totalPrice': total,
       'movieId': movieId, 'saloonId': saloonId, 'cinemaId': cinemaId
@@ -291,4 +293,21 @@ function tickets() {
   setTimeout(function () {
     retrieveTakenSeats(date);
   }, 90);
+}
+async function renderMovies(){
+  let movies;
+  try {
+    movies = await (await fetch('/api/movies')).json();
+  }
+  catch (ignore) { }
+  console.log(movies);
+  var select1 = document.getElementById("selectMovie");
+  for (index of movies){
+   var opt = index.id;
+   var opt1 = index.title;
+   var el = document.createElement("option");
+   el.textContent = opt1;
+   el.value = opt;
+   select1.appendChild(el);
+  }
 }
